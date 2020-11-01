@@ -5,6 +5,8 @@ data = pd.read_csv('../../data/procdata.csv')
 data.hist(figsize=(20, 20))
 plt.show()
 
+print(data.head())
+
 
 print(data.info())
 print("Hellop world")
