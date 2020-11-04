@@ -5,11 +5,12 @@ from matplotlib import ticker
 import plotly.express as px
 import plotly.graph_objects as go
 
-df = pd.read_csv('../../data/cleandata.csv')
+df = pd.read_csv('../../data/normalizeddata.csv')
 
 
 def descriptive():
     print(df.describe(include='all'))
+    df.head(10)
 
 
 def plot_histogram():
@@ -20,9 +21,8 @@ def plot_histogram():
 def lineplot():
     plt.figure(figsize=(16, 10))
     sns.set(style="darkgrid")
-    # Add tempo, loudness, key,  once normalized
     columns = ["acousticness", "danceability", "energy", "instrumentalness", "liveness",
-               "mode", "speechiness", "valence"]
+               "loudness", "speechiness", "tempo", "valence"]
     for col in columns:
         x = df.groupby("decade")[col].mean()
         ax = sns.lineplot(x=x.index, y=x, label=col)
@@ -47,6 +47,6 @@ def radarplot():
 
 if __name__ == '__main__':
     descriptive()
-    plot_histogram()
-    radarplot()
-    lineplot()
+    # plot_histogram()
+    # radarplot()
+    # lineplot()
