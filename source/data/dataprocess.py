@@ -24,6 +24,20 @@ df["year"] = df["year"].astype(int)
 #change name from year to decade
 df.rename(columns={'year': 'decade'}, inplace=True)
 
+df = df[df.decade != 1920]
+df = df[df.decade != 1930]
+df = df[df.decade != 1980]
+df = df[df.decade != 1990]
+df = df[df.decade != 2000]
+df = df[df.decade != 2010]
+df = df[df.decade != 2020]
+
+print(df.head(5))
+# print("antall: ", df.shape(1940))
+df_dec = df.groupby(['decade'])
+print(df_dec.size())
+
+
 #reduce decimals
 df["energy"] = df["energy"].round(4)
 df["acousticness"] = df["acousticness"].round(4)
