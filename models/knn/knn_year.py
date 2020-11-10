@@ -15,11 +15,11 @@ df = pd.read_csv("../../data/normalizeddata_year.csv")
 df.replace("?", -99999, inplace=True)
 
 # Try without all attributes
-# X =df.drop(["liveness"], axis=1, inplace=True)
-# X =df.drop(["speechiness"], axis=1, inplace=True)
+# X = df.drop(["liveness"], axis=1, inplace=True)
+# X = df.drop(["speechiness"], axis=1, inplace=True)
 # X = df.drop(["tempo"], axis=1, inplace=True)
 # X = df.drop(["loudness"], axis=1, inplace=True)
-# X =df.drop(["liveness"], axis=1, inplace=True)
+# X = df.drop(["liveness"], axis=1, inplace=True)
 # 0.27838267317991877
 
 # attributa or featrues withouth the "solution"/ class/ decade.
