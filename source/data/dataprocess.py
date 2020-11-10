@@ -24,6 +24,16 @@ df["year"] = df["year"].astype(int)
 #change name from year to decade
 df.rename(columns={'year': 'decade'}, inplace=True)
 
+df_dec = df.groupby(['decade'])
+print("sum of size" , df_dec.size().sum())
+print(df_dec.size())
+
+
+df_1920 = df[df.decade == 1920]
+print("df_ 20s: ", df_1920.head())
+print(df_1920.size)
+
+"""
 df = df[df.decade != 1920]
 df = df[df.decade != 1930]
 df = df[df.decade != 1980]
@@ -32,11 +42,7 @@ df = df[df.decade != 2000]
 df = df[df.decade != 2010]
 df = df[df.decade != 2020]
 
-print(df.head(5))
-# print("antall: ", df.shape(1940))
-df_dec = df.groupby(['decade'])
-print(df_dec.size())
-
+"""
 
 #reduce decimals
 df["energy"] = df["energy"].round(4)
@@ -51,8 +57,11 @@ df["tempo"] = df["tempo"].round(4)
 df["valence"] = df["valence"].round(4)
 
 
+
+
 #create new datasets with removed unessasary columns etc.
 df.to_csv(r"../../data/cleandata.csv", index=False)
+
 
 
 #Leser renset dataset for å kunne printe det.

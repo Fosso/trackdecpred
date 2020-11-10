@@ -2,15 +2,15 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 from matplotlib import ticker
-import plotly.express as px
 import plotly.graph_objects as go
 
-df = pd.read_csv('../../data/cleandata.csv')
+
+df = pd.read_csv('../../data/normalizeddata.csv')
 
 
 def descriptive():
     print(df.describe(include='all'))
-
+    df.head(10)
 
 
 def plot_histogram():
@@ -21,9 +21,8 @@ def plot_histogram():
 def lineplot():
     plt.figure(figsize=(16, 10))
     sns.set(style="darkgrid")
-    # Add tempo, loudness, key,  once normalized
     columns = ["acousticness", "danceability", "energy", "instrumentalness", "liveness",
-               "mode", "speechiness", "valence"]
+               "loudness", "speechiness", "tempo", "valence"]
     for col in columns:
         x = df.groupby("decade")[col].mean()
         ax = sns.lineplot(x=x.index, y=x, label=col)
@@ -36,18 +35,35 @@ def lineplot():
 
 
 def radarplot():
+    fig = go.Figure()
     radar = df.loc[:, "acousticness": "valence"]
-    labels = list(radar.columns)
-    values = radar.mean().values
-    df_radar = pd.DataFrame(dict(r=values, theta=labels))
-    fig = px.line_polar(df_radar, r="r", theta="theta", line_close=True)
-    fig.update_traces(fill="toself")
+    dec = df.groupby('decade')
+    keys = dec.groups.keys()
+
+    for key in keys:
+
+        fig.add_trace(go.Scatterpolar(
+            r=radar.loc[key].values,
+            theta=radar.columns,
+            fill='toself',
+            opacity=0.99,
+            name=key
+        ))
+
+    fig.update_layout(
+        polar=dict(
+            radialaxis=dict(
+                visible=True,
+                range=[0, 1],
+            )),
+        showlegend=True
+    )
+
     fig.show()
-    return df_radar
 
 
 if __name__ == '__main__':
     descriptive()
+    radarplot()
     plot_histogram()
-    # radarplot()
     lineplot()
