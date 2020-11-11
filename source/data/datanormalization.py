@@ -6,7 +6,6 @@ df = pd.read_csv('../../data/cleandata.csv')
 
 
 #Normlization of colomn tempo
-
 df_tempo = pd.DataFrame(df["tempo"])
 
 A = df_tempo.values #returnerer et array
