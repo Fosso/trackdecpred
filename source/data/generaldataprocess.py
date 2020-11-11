@@ -54,8 +54,15 @@ def proc_and_norm_gen(df):
 
     return df
 
+# Processing data for experiment two (year)
+def proc_exp1(df):
+    df_exp1 = df
+    # not changing anything
 
-# Function for proc exp_1 and exp_3
+    return df_exp1
+
+
+# Function for proc exp_2 and exp_3, 4 and 5
 def year_to_decade(df):
     df_decade = df
     # converting from year to decade
@@ -70,17 +77,9 @@ def year_to_decade(df):
     return df_decade
 
 
-# Processing data for expperiment one (decade)
-def proc_exp1(df):
-    df_exp1 = year_to_decade(df)
-    return df_exp1
-
-
-# Processing data for experiment two (year)
+# Processing data for expperiment two (decade)
 def proc_exp2(df):
-    df_exp2 = df
-    # not changing anything
-
+    df_exp2 = year_to_decade(df)
     return df_exp2
 
 
