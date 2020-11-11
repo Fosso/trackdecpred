@@ -85,10 +85,11 @@ def proc_exp2(df):
 
 
 # Processing data for experiment three (1930 - 1980, decade)
-def proc_exp3(df_3):
-    df_exp3 = year_to_decade(df_3)
+def proc_exp3(df):
+    df_exp3 = year_to_decade(df)
     # Removing uninteresting rows
     df_exp3 = df_exp3[df_exp3.decade != 1920]
+
     df_exp3 = df_exp3[df_exp3.decade != 1990]
     df_exp3 = df_exp3[df_exp3.decade != 2000]
     df_exp3 = df_exp3[df_exp3.decade != 2010]
@@ -118,11 +119,17 @@ def proc_exp4(df):
 def proc_exp5(df_5):
     df_exp5 = year_to_decade(df_5)
     # Removing uninteresting rows
-    remove_list = [1930, 1990, 2020, 2010]
-    for i in range(0, len(remove_list) - 1):
-        remove_decade = remove_list[i]
-        df_exp5 = df_exp5[df_exp5.decade != remove_decade]
-        return df_exp5
+    df_exp5 = df_exp5[df_exp5.decade != 1920]
+    df_exp5 = df_exp5[df_exp5.decade != 1940]
+    df_exp5 = df_exp5[df_exp5.decade != 1950]
+    df_exp5 = df_exp5[df_exp5.decade != 1960]
+    df_exp5 = df_exp5[df_exp5.decade != 1970]
+    df_exp5 = df_exp5[df_exp5.decade != 1990]
+    df_exp5 = df_exp5[df_exp5.decade != 2000]
+    df_exp5 = df_exp5[df_exp5.decade != 2010]
+    df_exp5 = df_exp5[df_exp5.decade != 2020]
+
+    return df_exp5
 
 
 # Creating cleaned CSV-data files
@@ -132,26 +139,31 @@ def createfile(dataframe, filename):
 
 # on run, this gets expectued
 if __name__ == '__main__':
+    # Creates csv file for correct problems
+
     df_read = readfile('../../data/procdata.csv')
     df_proc = proc_and_norm_gen(df_read)
-
     df_exp1_cleaned = proc_exp1(df_proc)
-    df_exp2_cleaned = proc_exp2(df_proc)
-
-    """
-    df_exp3 = proc_exp3(df)
-    df_exp4_1 = proc_exp4(df)
-
-    df_exp5_1 = proc_exp5(df)
-    """
-    # creates clean and normalize data
-
     createfile(df_exp1_cleaned, "cleaneddata_exp1.csv")
-    createfile(df_exp2_cleaned, "cleaneddata_exp2.csv")
-    """
 
-    createfile(df_exp3, "cleaneddata_exp3.csv")
-      
-    createfile(df_exp4_1, "cleaneddata_exp4.csv")
-    createfile(df_exp5_1, "cleaneddata_exp5.csv")
-"""
+    df_read_2 = readfile('../../data/procdata.csv')
+    df_proc_2 = proc_and_norm_gen(df_read_2)
+    df_exp2_cleaned = proc_exp2(df_proc_2)
+    createfile(df_exp2_cleaned, "cleaneddata_exp2.csv")
+
+    df_read_3 = readfile('../../data/procdata.csv')
+    df_proc_3 = proc_and_norm_gen(df_read_3)
+    df_exp3_cleaned = proc_exp3(df_proc_3)
+    createfile(df_exp3_cleaned, "cleaneddata_exp3.csv")
+
+    df_read_4 = readfile('../../data/procdata.csv')
+    df_proc_4 = proc_and_norm_gen(df_read_4)
+    df_exp4_cleaned = proc_exp4(df_proc_4)
+    createfile(df_exp4_cleaned, "cleaneddata_exp4.csv")
+
+    df_read_5 = readfile('../../data/procdata.csv')
+    df_proc_5 = proc_and_norm_gen(df_read_5)
+    df_exp5_cleaned = proc_exp5(df_proc_5)
+    createfile(df_exp5_cleaned, "cleaneddata_exp5.csv")
+
+
