@@ -4,28 +4,33 @@ import numpy as np
 from sklearn import preprocessing, neighbors
 from sklearn.model_selection import train_test_split, cross_val_score
 import pandas as pd
-import time
 from models.knn.knn_year import knn_exp1
 
 
 # update filepaths
 def run_knn(param_k, exp, **kwargs):
-    df = pd.read_csv("data/normalizeddata.csv")
+    # df = pd.read_csv("data/cleaneddata_exp1")
+    df = pd.read_csv("../../data/cleanneddata_exp1.csv")
+    # df = []
     if exp == "1":
-        print("????")
-        df = pd.read_csv("data/normalizeddata.csv")  # endre exp2 til exp1 csv. filed
+        print("Reached start of exp 1")
         knn_exp1(df, param_k)
 
     else:
-
+        print("Reached start of else")
         if exp == "2":
-            df = pd.read_csv("data/cleaneddata_exp2")
+            # df = pd.read_csv("data/cleaneddata_exp2")
+            df = pd.read_csv("../../data/cleanneddata_exp2.csv")
         elif exp == "3":
-            df = pd.read_csv("data/cleaneddata_exp3")
+            # df = pd.read_csv("data/cleaneddata_exp3")
+            df = pd.read_csv("../../data/cleanneddata_exp3.csv")
+
         elif exp == "4":
-            df = pd.read_csv("data/cleaneddata_exp4")
+            # df = pd.read_csv("data/cleaneddata_exp4")
+            df = pd.read_csv("../../data/cleanneddata_exp4.csv")
         elif exp == "5":
-            df = pd.read_csv("data/cleaneddata_exp5")
+            # df = pd.read_csv("data/cleaneddata_exp5")
+            df = pd.read_csv("../../data/cleanneddata_exp5.csv")
 
         y = np.array(df["decade"])
 
@@ -52,8 +57,9 @@ def run_knn(param_k, exp, **kwargs):
             plt.show()
         # This is knn with predefined k
         else:
+
             k = param_k
-            print("DETTE ER K: ", k)
+            print("Reached: predined k else, and k is: ", k)
             clf = neighbors.KNeighborsClassifier(k)
 
             cv_scores = cross_val_score(clf, X_train, y_train)
@@ -94,4 +100,4 @@ def run_knn_with_find_k(X_train, X_test, y_train, y_test):
 
 
 if __name__ == '__main__':
-    run_knn(5, 1)
+    run_knn(5, "5")

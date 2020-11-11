@@ -130,12 +130,6 @@ def proc_exp5(df_5):
 
     return df_exp5
 
-
-# Creating cleaned CSV-data files
-def createfile(dataframe, filename):
-    dataframe.to_csv(r"../../data/file{0}.csv".format(filename), index=False)
-
-
 # on run, this gets expectued
 if __name__ == '__main__':
     # Creates csv file for correct problems
@@ -143,26 +137,26 @@ if __name__ == '__main__':
     df_read = readfile('../../data/procdata.csv')
     df_proc = proc_and_norm_gen(df_read)
     df_exp1_cleaned = proc_exp1(df_proc)
-    createfile(df_exp1_cleaned, "cleaneddata_exp1.csv")
+    df_exp1_cleaned.to_csv(r"../../data/cleanneddata_exp1.csv", index=False)
 
     df_read_2 = readfile('../../data/procdata.csv')
     df_proc_2 = proc_and_norm_gen(df_read_2)
     df_exp2_cleaned = proc_exp2(df_proc_2)
-    createfile(df_exp2_cleaned, "cleaneddata_exp2.csv")
+    df_exp2_cleaned.to_csv(r"../../data/cleanneddata_exp2.csv", index=False)
 
     df_read_3 = readfile('../../data/procdata.csv')
     df_proc_3 = proc_and_norm_gen(df_read_3)
     df_exp3_cleaned = proc_exp3(df_proc_3)
-    createfile(df_exp3_cleaned, "cleaneddata_exp3.csv")
+    df_exp3_cleaned.to_csv(r"../../data/cleanneddata_exp3.csv", index=False)
 
     df_read_4 = readfile('../../data/procdata.csv')
     df_proc_4 = proc_and_norm_gen(df_read_4)
     df_exp4_cleaned = proc_exp4(df_proc_4)
-    createfile(df_exp4_cleaned, "cleaneddata_exp4.csv")
+    df_exp4_cleaned.to_csv(r"../../data/cleanneddata_exp4.csv", index=False)
 
     df_read_5 = readfile('../../data/procdata.csv')
     df_proc_5 = proc_and_norm_gen(df_read_5)
     df_exp5_cleaned = proc_exp5(df_proc_5)
-    createfile(df_exp5_cleaned, "cleaneddata_exp5.csv")
+    df_exp5_cleaned.to_csv(r"../../data/cleanneddata_exp5.csv", index=False)
 
 

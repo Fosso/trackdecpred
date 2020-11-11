@@ -13,7 +13,7 @@ def parse_args():
     parser.add_argument("-exp", "--exp", type=str, default=["1"], nargs='?')
     parser.add_argument("-o", "--optimal", type=str, default=False, nargs='?')
     args = parser.parse_args()
-    print(args)
+    # print(args)
 
     return args
 
@@ -21,7 +21,7 @@ def parse_args():
 if __name__ == '__main__':
     args = parse_args()
     if args.knn:
-        model = run_knn(10, args.exp)
+        model = run_knn(11, args.exp)
     # else:
     #    model = run_dt()
     else:
