@@ -4,33 +4,40 @@ import numpy as np
 from sklearn import preprocessing, neighbors
 from sklearn.model_selection import train_test_split, cross_val_score
 import pandas as pd
-from models.knn.knn_year import knn_exp1
+from models.knn.knn_year import *
 
 
 # update filepaths
 def run_knn(param_k, exp, **kwargs):
-    # df = pd.read_csv("data/cleaneddata_exp1")
-    df = pd.read_csv("../../data/cleanneddata_exp1.csv")
+    df = pd.read_csv("data/cleanneddata_exp2.csv")
+    # df = pd.read_csv("../../data/cleanneddata_exp1.csv")
     # df = []
-    if exp == "1":
+    print("exp: ", exp)
+    # optimal k: 103
+    if exp == 1:
         print("Reached start of exp 1")
-        knn_exp1(df, param_k)
+        knn_exp1(param_k)
 
     else:
         print("Reached start of else")
-        if exp == "2":
-            # df = pd.read_csv("data/cleaneddata_exp2")
-            df = pd.read_csv("../../data/cleanneddata_exp2.csv")
-        elif exp == "3":
-            # df = pd.read_csv("data/cleaneddata_exp3")
-            df = pd.read_csv("../../data/cleanneddata_exp3.csv")
+        # optimal k: 70
+        if exp == 2:
+            df = pd.read_csv("data/cleanneddata_exp2.csv")
+            print("første if, altså exp2")
+            # df = pd.read_csv("../../data/cleanneddata_exp2.csv")
+        # optimal k: 70
+        elif exp == 3:
+            df = pd.read_csv("data/cleanneddata_exp3.csv")
+            # df = pd.read_csv("../../data/cleanneddata_exp3.csv")
+        # optimal k: 11
+        elif exp == 4:
+            df = pd.read_csv("data/cleanneddata_exp4.csv")
+            #df = pd.read_csv("../../data/cleanneddata_exp4.csv")
 
-        elif exp == "4":
-            # df = pd.read_csv("data/cleaneddata_exp4")
-            df = pd.read_csv("../../data/cleanneddata_exp4.csv")
-        elif exp == "5":
-            # df = pd.read_csv("data/cleaneddata_exp5")
-            df = pd.read_csv("../../data/cleanneddata_exp5.csv")
+        # optimal k: 11
+        elif exp == 5:
+            df = pd.read_csv("data/cleanneddata_exp5.csv")
+            # df = pd.read_csv("../../data/cleanneddata_exp5.csv")
 
         y = np.array(df["decade"])
 
@@ -55,6 +62,8 @@ def run_knn(param_k, exp, **kwargs):
 
             # to show graph
             plt.show()
+            # plt.savefig("results/knn/optimal_k_exp5.png")
+
         # This is knn with predefined k
         else:
 
@@ -80,7 +89,7 @@ def run_knn_with_find_k(X_train, X_test, y_train, y_test):
     x_axis = []
     y_axis = []
 
-    for k in range(25, 35, 2):
+    for k in range(1, 20, 1):
         # values for k
         x_axis.append(k)
 
@@ -89,15 +98,11 @@ def run_knn_with_find_k(X_train, X_test, y_train, y_test):
 
         # adopt the dataen x and y trainingsets
         clf.fit(X_train, y_train)
+
         # to test the accuracy
         accuracy = clf.score(X_test, y_test)
 
         # values for accuracy
         y_axis.append(accuracy)
 
-        print(x_axis, y_axis)
     return x_axis, y_axis
-
-
-if __name__ == '__main__':
-    run_knn(5, "5")
