@@ -1,4 +1,5 @@
 import argparse
+from models.decisiontree.dt import run_dt
 from models.knn.knn import run_knn
 # from models.dt.dt_basic import run_dt
 
@@ -10,7 +11,7 @@ def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("-knn", "--knn", default=False, nargs='?', const=True)
     parser.add_argument("-dt", "--dt", default=False, nargs='?', const=True)
-    parser.add_argument("-exp", "--exp", type=str, default=["1"], nargs='?')
+    parser.add_argument("-exp", "--exp", type=str, default=[1], nargs='?')
     parser.add_argument("-o", "--optimal", type=str, default=False, nargs='?')
     args = parser.parse_args()
     # print(args)
@@ -21,8 +22,8 @@ def parse_args():
 if __name__ == '__main__':
     args = parse_args()
     if args.knn:
-        model = run_knn(11, args.exp)
-    # else:
-    #    model = run_dt()
+        model = run_knn(103, args.exp)
+    elif args.dt:
+        model = run_dt(2)
     else:
         pass
