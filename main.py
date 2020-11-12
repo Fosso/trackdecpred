@@ -9,6 +9,7 @@ def parse_args():
     :return: arguments, configuration dictionary
     """
     parser = argparse.ArgumentParser()
+    parser.add_argument("-t", "--test", default=False, nargs="?", const=True, help="just a test")
     parser.add_argument("-knn", "--knn", default=False, nargs='?', const=True)
     parser.add_argument("-dt", "--dt", default=False, nargs='?', const=True)
     parser.add_argument("-exp", "--exp", type=str, default=[1], nargs='?')
@@ -20,6 +21,7 @@ def parse_args():
 
 
 if __name__ == '__main__':
+
     args = parse_args()
     if args.knn:
         model = run_knn(103, args.exp)
