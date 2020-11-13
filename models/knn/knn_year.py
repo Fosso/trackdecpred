@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt  # for data visualization
 import numpy as np
 from sklearn import preprocessing, neighbors
 from sklearn.model_selection import train_test_split, cross_val_score
+from sklearn.metrics import classification_report, confusion_matrix
 import pandas as pd
 
 
@@ -28,6 +29,7 @@ def knn_exp1(param_k):
     correct = 0
     interval = 5
     accuracy_list = []
+
 
     for i in range(len(X_test)):
         if y_test[i] + interval >= prediction[i] >= y_test[i] - interval:
