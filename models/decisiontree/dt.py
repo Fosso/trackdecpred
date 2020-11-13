@@ -24,14 +24,12 @@ def dt(df):
     print(classification_report(y_test, y_pred))
 
 
-
 # update filepaths
 def run_dt_on_dataset(exp):
     if exp == 3:
         # df_3 = pd.read_csv("data/cleanneddata_exp3")
         df_3 = pd.read_csv("../../data/cleanneddata_exp3.csv")
         dt(df_3)
-
 
     elif exp == 5:
         # df_5 = pd.read_csv("data/cleanneddata_exp3")
@@ -41,7 +39,7 @@ def run_dt_on_dataset(exp):
         print("DT is only implemented for experiment 3 and 5")
 
 
-run_dt_on_dataset(5)
+#run_dt_on_dataset(5)
 
 # exp_1: 9%
 # exp_2: 31%
