@@ -5,6 +5,7 @@ from sklearn import preprocessing, neighbors
 from sklearn.model_selection import train_test_split, cross_val_score
 import pandas as pd
 from models.knn.knn_year import *
+from sklearn.metrics import classification_report, confusion_matrix
 
 
 # update filepaths
@@ -74,15 +75,23 @@ def run_knn(param_k, exp, **kwargs):
             cv_scores = cross_val_score(clf, X_train, y_train)
             clf.fit(X_train, y_train)
 
-            # Cross validate accuracy
-            cv_scores_mean = np.mean(cv_scores)
-            print("Cross validated accuracy: ", cv_scores_mean)
-
             # The accuracy
             accuracy = clf.score(X_test, y_test)
             print("Accuracy: ", accuracy)
 
+            # Cross validate accuracy
+            cv_scores_mean = np.mean(cv_scores)
+            print("Cross validated accuracy: ", cv_scores_mean)
+
+            y_pred = clf.predict(X_test)
+            print("Y_PRED:: ", y_pred)
+
+            print(confusion_matrix(y_test, y_pred))
+            print(classification_report(y_test, y_pred))
+
             # print("Program took", time.time() - start_time, "s to run")
+
+
 
 
 def run_knn_with_find_k(X_train, X_test, y_train, y_test):
