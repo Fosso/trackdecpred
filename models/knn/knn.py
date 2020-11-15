@@ -86,7 +86,7 @@ def run_knn(param_k, exp, **kwargs):
             y_pred = clf.predict(X_test)
             print("Y_PRED:: ", y_pred)
 
-            # print(confusion_matrix(y_test, y_pred))
+            # Prints confusion matrix with presentation view.
             plot_confusion_matrix(clf, X_test, y_test)
             plt.show()
 
