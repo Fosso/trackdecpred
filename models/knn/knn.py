@@ -5,13 +5,13 @@ from sklearn import preprocessing, neighbors
 from sklearn.model_selection import train_test_split, cross_val_score
 import pandas as pd
 from models.knn.knn_year import *
-from sklearn.metrics import classification_report, confusion_matrix
+from sklearn.metrics import classification_report, confusion_matrix, f1_score
 
 
 # update filepaths
 def run_knn(param_k, exp, **kwargs):
-    df = pd.read_csv("data/cleanneddata_exp2.csv")
-    # df = pd.read_csv("../../data/cleanneddata_exp1.csv")
+    # df = pd.read_csv("data/cleanneddata_exp2.csv")
+    df = pd.read_csv("../../data/cleanneddata_exp3.csv")
     # df = []
     print("exp: ", exp)
     # optimal k: 103
@@ -28,8 +28,8 @@ def run_knn(param_k, exp, **kwargs):
             # df = pd.read_csv("../../data/cleanneddata_exp2.csv")
         # optimal k: 70
         elif exp == 3:
-            df = pd.read_csv("data/cleanneddata_exp3.csv")
-            # df = pd.read_csv("../../data/cleanneddata_exp3.csv")
+            # df = pd.read_csv("data/cleanneddata_exp3.csv")
+            df = pd.read_csv("../../data/cleanneddata_exp3.csv")
         # optimal k: 11
         elif exp == 4:
             df = pd.read_csv("data/cleanneddata_exp4.csv")
@@ -86,8 +86,13 @@ def run_knn(param_k, exp, **kwargs):
             y_pred = clf.predict(X_test)
             print("Y_PRED:: ", y_pred)
 
-            print(confusion_matrix(y_test, y_pred))
+            # print(confusion_matrix(y_test, y_pred))
             print(classification_report(y_test, y_pred))
+            f1_micro = f1_score(y_test, y_pred, average='micro')
+            print()
+            return cv_scores_mean, f1_micro
+            #return classification_report(y_test, y_pred, output_dict=True)
+
 
             # print("Program took", time.time() - start_time, "s to run")
 
