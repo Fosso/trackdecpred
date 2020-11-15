@@ -33,7 +33,7 @@ def run_knn(param_k, exp, **kwargs):
         # optimal k: 11
         elif exp == 4:
             df = pd.read_csv("data/cleanneddata_exp4.csv")
-            #df = pd.read_csv("../../data/cleanneddata_exp4.csv")
+            # df = pd.read_csv("../../data/cleanneddata_exp4.csv")
 
         # optimal k: 11
         elif exp == 5:
@@ -69,34 +69,28 @@ def run_knn(param_k, exp, **kwargs):
         else:
 
             k = param_k
-            print("Reached: predined k else, and k is: ", k)
             clf = neighbors.KNeighborsClassifier(k)
+            print("Reached: predined k else, and k is: ", k)
 
             cv_scores = cross_val_score(clf, X_train, y_train)
             clf.fit(X_train, y_train)
-
-            # The accuracy
-            accuracy = clf.score(X_test, y_test)
-            print("Accuracy: ", accuracy)
 
             # Cross validate accuracy
             cv_scores_mean = np.mean(cv_scores)
             print("Cross validated accuracy: ", cv_scores_mean)
 
             y_pred = clf.predict(X_test)
-            print("Y_PRED:: ", y_pred)
 
+            # Print confusion matrix and classification report, create f1_micro so it can be returned
             # print(confusion_matrix(y_test, y_pred))
             print(classification_report(y_test, y_pred))
             f1_micro = f1_score(y_test, y_pred, average='micro')
-            print()
-            return cv_scores_mean, f1_micro
-            #return classification_report(y_test, y_pred, output_dict=True)
 
+            return cv_scores_mean, f1_micro
+
+            # return classification_report(y_test, y_pred, output_dict=True)
 
             # print("Program took", time.time() - start_time, "s to run")
-
-
 
 
 def run_knn_with_find_k(X_train, X_test, y_train, y_test):
