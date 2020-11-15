@@ -62,7 +62,7 @@ def run_knn(param_k, exp, **kwargs):
 
             # to show graph
             plt.show()
-            # plt.savefig("results/knn/optimal_k_exp5.png")
+            #plt.savefig("results/knn/optimal_k_exp5.png")
 
         # This is knn with predefined k
         else:

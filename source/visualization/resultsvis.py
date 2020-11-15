@@ -1,11 +1,10 @@
 import pandas as pd
-import matplotlib as plt
+import matplotlib.pyplot as plt
 from models.knn.knn import run_knn
 from models.decisiontree.dt import run_dt_on_dataset
 from models.suppoertvectormachines.svm import run_svm_on_dataset
 
 import numpy as np
-
 
 def get_metrics(experiment):
     accuracy = []
@@ -52,23 +51,31 @@ def accuracy_graph(experiment):
     knn = []
     dt = []
     svm = []
-    knn.extend((accuracy[0], f1_score[0]))
-    dt.extend((accuracy[1], f1_score[1]))
-    svm.extend((accuracy[2], f1_score[2]))
+    knn.extend((accuracy[0].round(3), f1_score[0].round(3)))
+    dt.extend((accuracy[1].round(3), f1_score[1].round(3)))
+    svm.extend((accuracy[2].round(3), f1_score[2].round(3)))
 
     x = np.arange(len(labels))  # the label locations
-    width = 0.25  # the width of the bars
+    width = 0.2  # the width of the bars
 
     fig, ax = plt.subplots()
-    rects1 = ax.bar(x - width / 2, knn, width, label='KNN')
-    rects2 = ax.bar(width / 2, dt, width, label='Decision Tree')
-    rects3 = ax.bar(x + width / 2, svm, width, label='Support Vector Machiene')
-
+    rects1 = ax.bar(x, knn, width, label='KNN', color='royalblue')
+    rects2 = ax.bar(x + width, dt, width, label='DT', color='deepskyblue')
+    rects3 = ax.bar(x + width * 2, svm, width, label='SVM', color='paleturquoise')
     # Add some text for labels, title and custom x-axis tick labels, etc.
     ax.set_ylabel('Percentage')
-    ax.set_title('Experiment', experiment)
-    ax.set_xticks(x)
+    # ax.set_title('Experiment')
+    ax.set_xticks(x + width)
+
+    # Add some text for labels, title and custom x-axis tick labels, etc.
+
+    if experiment == 5:
+        ax.set_title('Experiment 5')
+    else:
+        ax.set_title('Experiment 3')
+
     ax.set_xticklabels(labels)
+
     ax.legend()
 
     def autolabel(rects):
@@ -76,7 +83,7 @@ def accuracy_graph(experiment):
         for rect in rects:
             height = rect.get_height()
             ax.annotate('{}'.format(height),
-                        xy=(rect.get_x() + rect.get_width() / 2, height),
+                        xy=(rect.get_x() + rect.get_width() / 3, height),
                         xytext=(0, 3),  # 3 points vertical offset
                         textcoords="offset points",
                         ha='center', va='bottom')
@@ -86,9 +93,10 @@ def accuracy_graph(experiment):
     autolabel(rects3)
 
     fig.tight_layout()
+    #plt.show()
+    #plt.savefig("../../results/accuracy_f1_results_exp5.png")
+    #plt.savefig("../../results/accuracy_f1_results_exp3.png")
 
-    plt.show()
 
-
-accuracy_graph(5)
+accuracy_graph(3)
 
