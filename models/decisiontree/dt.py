@@ -34,7 +34,7 @@ def dt(df):
 
 # update filepaths
 def run_dt_on_dataset(exp):
-    print("---start of knn---")
+    print("---start of dt---")
     cv_scores_mean, f1_micro = 0, 0
     if exp == 3:
         # df_3 = pd.read_csv("data/cleanneddata_exp3")

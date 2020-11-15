@@ -31,13 +31,13 @@ def run_knn(param_k, exp, **kwargs):
             df = pd.read_csv("../../data/cleanneddata_exp3.csv")
         # optimal k: 11
         elif exp == 4:
-            df = pd.read_csv("data/cleanneddata_exp4.csv")
-            # df = pd.read_csv("../../data/cleanneddata_exp4.csv")
+            # df = pd.read_csv("data/cleanneddata_exp4.csv")
+             df = pd.read_csv("../../data/cleanneddata_exp4.csv")
 
         # optimal k: 11
         elif exp == 5:
-            df = pd.read_csv("data/cleanneddata_exp5.csv")
-            # df = pd.read_csv("../../data/cleanneddata_exp5.csv")
+            # df = pd.read_csv("data/cleanneddata_exp5.csv")
+             df = pd.read_csv("../../data/cleanneddata_exp5.csv")
 
         y = np.array(df["decade"])
 

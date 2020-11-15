@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 
 
 def svm(df, kernel, deg, **kwargs):
+    print("---start of svm---")
     global clf
     y = np.array(df["decade"])
     X = np.array(df.drop(["decade"], axis=1))
@@ -91,7 +92,7 @@ run_svm_on_dataset(5, "p", 4)
 """
 
 # For dataset 3
-run_svm_on_dataset(3, "l", 0)
+#run_svm_on_dataset(3, "l", 0)
 # run_svm_on_dataset(3, "s", 0)
 # run_svm_on_dataset(3, "g", 0)"""
 # run_svm_on_dataset(3, "p", 2)
