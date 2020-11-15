@@ -4,6 +4,7 @@ from sklearn.svm import SVC
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report, confusion_matrix
 import matplotlib.pyplot as plt
+from sklearn.metrics import plot_confusion_matrix
 
 
 def svm(df, kernel, deg, **kwargs):
@@ -47,7 +48,9 @@ def svm(df, kernel, deg, **kwargs):
 
     print("Accuracy: ", accuracy_svc)
 
-    print(confusion_matrix(y_test, y_pred))
+    plot_confusion_matrix(clf, X_test, y_test)
+    plt.show()
+
     print(classification_report(y_test, y_pred))
 
 
@@ -67,9 +70,10 @@ def run_svm_on_dataset(exp, kernel, deg):
         print("DT is only implemented for experiment 3 and 5")
 
 
-"""
+
 #For dataset 5
 run_svm_on_dataset(5, "l", 0)
+"""
 run_svm_on_dataset(5, "s", 0)
 run_svm_on_dataset(5, "g", 0)
 run_svm_on_dataset(5, "p", 2)
@@ -79,9 +83,12 @@ run_svm_on_dataset(5, "p", 4)
 """
 
 # For dataset 3
-"""run_svm_on_dataset(3, "l", 0)
+"""
+run_svm_on_dataset(3, "l", 0)
+
 run_svm_on_dataset(3, "s", 0)
-run_svm_on_dataset(3, "g", 0)"""
+run_svm_on_dataset(3, "g", 0)
 run_svm_on_dataset(3, "p", 2)
 run_svm_on_dataset(3, "p", 3)
 run_svm_on_dataset(3, "p", 4)
+"""

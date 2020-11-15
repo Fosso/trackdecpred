@@ -1,10 +1,13 @@
 import matplotlib
 import pandas as pd
+from pandas import DataFrame
 import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import classification_report, confusion_matrix
 import matplotlib.pyplot as plt
+from sklearn.metrics import plot_confusion_matrix
+from IPython.display import display
 
 
 def dt(df):
@@ -21,7 +24,9 @@ def dt(df):
     accuracy_dt = clf.score(X_test, y_test)
     print("Accuracy: ", accuracy_dt)
 
-    print(confusion_matrix(y_test, y_pred))
+    plot_confusion_matrix(clf, X_test, y_test)
+    plt.show()
+
     print(classification_report(y_test, y_pred))
 
 
@@ -35,6 +40,7 @@ def run_dt_on_dataset(exp):
         df_3 = pd.read_csv("../../data/cleanneddata_exp3.csv")
         dt(df_3)
 
+
     elif exp == 5:
         # df_5 = pd.read_csv("data/cleanneddata_exp3")
         df_5 = pd.read_csv("../../data/cleanneddata_exp5.csv")
@@ -42,7 +48,7 @@ def run_dt_on_dataset(exp):
     else:
         print("DT is only implemented for experiment 3 and 5")
 
-# run_dt_on_dataset(5)
+run_dt_on_dataset(3)
 
 # exp_1: 9%
 # exp_2: 31%
