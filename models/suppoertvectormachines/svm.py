@@ -4,6 +4,7 @@ from sklearn.svm import SVC
 from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.metrics import classification_report, confusion_matrix, f1_score
 import matplotlib.pyplot as plt
+from sklearn.metrics import plot_confusion_matrix
 
 
 def svm(df, kernel, deg, **kwargs):
@@ -55,7 +56,9 @@ def svm(df, kernel, deg, **kwargs):
 
     # print("F1_MICRO I SVM: ", f1_micro, "CV_SCORES_MEAN I SVM: ", cv_scores_mean)
 
-    print(classification_report(y_test, y_pred))
+    plot_confusion_matrix(clf, X_test, y_test)
+    plt.show()
+
     return cv_scores_mean, f1_micro
 
 
@@ -79,9 +82,12 @@ def run_svm_on_dataset(exp, kernel, deg):
     return cv_scores_mean, f1_micro
 
 
+
 #For dataset 5
 
 #run_svm_on_dataset(5, "l", 0)
+
+
 """
 run_svm_on_dataset(5, "s", 0)
 run_svm_on_dataset(5, "g", 0)
@@ -92,9 +98,21 @@ run_svm_on_dataset(5, "p", 4)
 """
 
 # For dataset 3
+
 #run_svm_on_dataset(3, "l", 0)
 # run_svm_on_dataset(3, "s", 0)
-# run_svm_on_dataset(3, "g", 0)"""
+# run_svm_on_dataset(3, "g", 0)
 # run_svm_on_dataset(3, "p", 2)
 # run_svm_on_dataset(3, "p", 3)
 # run_svm_on_dataset(3, "p", 4)
+
+"""
+run_svm_on_dataset(3, "l", 0)
+
+run_svm_on_dataset(3, "s", 0)
+run_svm_on_dataset(3, "g", 0)
+run_svm_on_dataset(3, "p", 2)
+run_svm_on_dataset(3, "p", 3)
+run_svm_on_dataset(3, "p", 4)
+"""
+

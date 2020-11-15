@@ -6,7 +6,7 @@ from sklearn.model_selection import train_test_split, cross_val_score
 import pandas as pd
 from models.knn.knn_year import *
 from sklearn.metrics import classification_report, confusion_matrix, f1_score
-
+from sklearn.metrics import plot_confusion_matrix
 
 # update filepaths
 def run_knn(param_k, exp, **kwargs):
@@ -79,9 +79,11 @@ def run_knn(param_k, exp, **kwargs):
 
             y_pred = clf.predict(X_test)
 
-            # Print confusion matrix and classification report, create f1_micro so it can be returned
-            # print(confusion_matrix(y_test, y_pred))
-            print(classification_report(y_test, y_pred))
+
+            # Prints confusion matrix with presentation view.
+            plot_confusion_matrix(clf, X_test, y_test)
+            plt.show()
+
             f1_micro = f1_score(y_test, y_pred, average='micro')
 
             return cv_scores_mean, f1_micro
@@ -107,6 +109,9 @@ def run_knn_with_find_k(X_train, X_test, y_train, y_test):
 
         # to test the accuracy
         accuracy = clf.score(X_test, y_test)
+
+        plot_confusion_matrix(clf, X_test, y_test)
+        plt.show()
 
         # values for accuracy
         y_axis.append(accuracy)
