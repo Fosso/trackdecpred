@@ -6,6 +6,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import classification_report, confusion_matrix
 import matplotlib.pyplot as plt
 
+
 def dt(df):
     y = np.array(df["decade"])
     X = np.array(df.drop(["decade"], axis=1))
@@ -24,6 +25,9 @@ def dt(df):
     print(classification_report(y_test, y_pred))
 
 
+# TODO: return cv og f1
+
+
 # update filepaths
 def run_dt_on_dataset(exp):
     if exp == 3:
@@ -38,13 +42,10 @@ def run_dt_on_dataset(exp):
     else:
         print("DT is only implemented for experiment 3 and 5")
 
-
-#run_dt_on_dataset(5)
+# run_dt_on_dataset(5)
 
 # exp_1: 9%
 # exp_2: 31%
 # exp_3: 39%
 # exp_4: 96%
 # exp_5: 91%
-
-

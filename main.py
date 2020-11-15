@@ -1,5 +1,5 @@
 import argparse
-from models.decisiontree.dt import run_dt
+# from models.decisiontree.dt import run_dt
 from models.knn.knn import run_knn
 # from models.dt.dt_basic import run_dt
 
@@ -24,8 +24,8 @@ if __name__ == '__main__':
 
     args = parse_args()
     if args.knn:
-        model = run_knn(103, args.exp)
-    elif args.dt:
-        model = run_dt(2)
+        model = run_knn(6, 3)
+    # elif args.dt:
+        #   model = run_dt(2)
     else:
         pass

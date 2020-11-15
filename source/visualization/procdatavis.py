@@ -5,10 +5,14 @@ from matplotlib import ticker
 import plotly.express as px
 import plotly.graph_objects as go
 
-df = pd.read_csv('../../data/cleandata.csv')
+df = pd.read_csv('../../data/cleanneddata_exp3.csv')
 
 
 def descriptive():
+
+    # remove hashtags to see count for given decade
+    # dec_count = df.groupby("decade")
+    # print(dec_count.count())
     print(df.describe(include='all'))
 
 
@@ -46,7 +50,8 @@ def radarplot():
 
 
 if __name__ == '__main__':
+
     descriptive()
-    plot_histogram()
-    radarplot()
-    lineplot()
+    #plot_histogram()
+    #radarplot()
+    #lineplot()
