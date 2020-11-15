@@ -10,21 +10,20 @@ from sklearn.metrics import classification_report, confusion_matrix, f1_score
 
 # update filepaths
 def run_knn(param_k, exp, **kwargs):
+    print("---start of knn---")
+    print("k : ", param_k, "exp: ", exp)
     # df = pd.read_csv("data/cleanneddata_exp2.csv")
     df = pd.read_csv("../../data/cleanneddata_exp3.csv")
     # df = []
-    print("exp: ", exp)
     # optimal k: 103
     if exp == 1:
-        print("Reached start of exp 1")
         knn_exp1(param_k)
-
     else:
-        print("Reached start of else")
+
         # optimal k: 70
         if exp == 2:
             df = pd.read_csv("data/cleanneddata_exp2.csv")
-            print("første if, altså exp2")
+
             # df = pd.read_csv("../../data/cleanneddata_exp2.csv")
         # optimal k: 70
         elif exp == 3:
@@ -70,14 +69,13 @@ def run_knn(param_k, exp, **kwargs):
 
             k = param_k
             clf = neighbors.KNeighborsClassifier(k)
-            print("Reached: predined k else, and k is: ", k)
 
             cv_scores = cross_val_score(clf, X_train, y_train)
             clf.fit(X_train, y_train)
 
             # Cross validate accuracy
             cv_scores_mean = np.mean(cv_scores)
-            print("Cross validated accuracy: ", cv_scores_mean)
+            # print("Cross validated accuracy: ", cv_scores_mean)
 
             y_pred = clf.predict(X_test)
 

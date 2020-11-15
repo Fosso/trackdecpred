@@ -46,13 +46,13 @@ def svm(df, kernel, deg, **kwargs):
 
     # Cross validate accuracy
     cv_scores_mean = np.mean(cv_scores)
-    print("Cross validated accuracy: ", cv_scores_mean)
+    print("Cross validated accuracy in SVM: ", cv_scores_mean)
 
     print("This is svm with {} kernel {}: \n".format(kernel, (", with degree: ", deg)))
 
     f1_micro = f1_score(y_test, y_pred, average='micro')
 
-    print("F1_MICRO I SVM: ", f1_micro, "CV_SCORES_MEAN I SVM: ", cv_scores_mean)
+    # print("F1_MICRO I SVM: ", f1_micro, "CV_SCORES_MEAN I SVM: ", cv_scores_mean)
 
     print(classification_report(y_test, y_pred))
     return cv_scores_mean, f1_micro
@@ -65,12 +65,12 @@ def run_svm_on_dataset(exp, kernel, deg):
         print("reached exp = 3")
         # svm_3 = pd.read_csv("data/cleanneddata_exp3")
         df_3 = pd.read_csv("../../data/cleanneddata_exp3.csv")
-        svm(df_3, kernel, deg)
+        cv_scores_mean, f1_micro = svm(df_3, kernel, deg)
 
     elif exp == 5:
         # df_5 = pd.read_csv("data/cleanneddata_exp3")
         df_5 = pd.read_csv("../../data/cleanneddata_exp5.csv")
-        svm(df_5, kernel, deg)
+        cv_scores_mean, f1_micro = svm(df_5, kernel, deg)
 
     else:
         print("DT is only implemented for experiment 3 and 5")
@@ -80,7 +80,7 @@ def run_svm_on_dataset(exp, kernel, deg):
 
 #For dataset 5
 
-run_svm_on_dataset(5, "l", 0)
+#run_svm_on_dataset(5, "l", 0)
 """
 run_svm_on_dataset(5, "s", 0)
 run_svm_on_dataset(5, "g", 0)
@@ -91,7 +91,7 @@ run_svm_on_dataset(5, "p", 4)
 """
 
 # For dataset 3
-# run_svm_on_dataset(3, "l", 0)
+run_svm_on_dataset(3, "l", 0)
 # run_svm_on_dataset(3, "s", 0)
 # run_svm_on_dataset(3, "g", 0)"""
 # run_svm_on_dataset(3, "p", 2)

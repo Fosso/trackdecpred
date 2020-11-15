@@ -22,7 +22,7 @@ def get_metrics(experiment):
         f1_score.append(dt_f1_micro)
 
         #optimal solution is with Gaussian kernel
-        svm_cv_mean, svm_f1_micro = run_svm_on_dataset(3, "g", 0)
+        svm_cv_mean, svm_f1_micro = run_svm_on_dataset(3, "l", 0)
         accuracy.append(svm_cv_mean)
         f1_score.append(svm_f1_micro)
 
@@ -75,7 +75,7 @@ def get_metrics(experiment):
 # knn_weighted_avg = round(class_report["weighted avg"], 4)
 # print("Acc::: ", knn_accuracy, knn_macro_avg, knn_weighted_avg)
 # knn
-
+"""
 def accuracy_graph(method,accuracy_list_knn, accuracy_list_dt, accuracy_list_svm):
     labels = ['Accuracy', 'F1 score']
     accuracy_list_dt = ['G1', 'G2', 'G3', 'G4', 'G5']
@@ -100,7 +100,7 @@ def accuracy_graph(method,accuracy_list_knn, accuracy_list_dt, accuracy_list_svm
     ax.legend()
 
     def autolabel(rects):
-        """Attach a text label above each bar in *rects*, displaying its height."""
+        Attach a text label above each bar in *rects*, displaying its height.
         for rect in rects:
             height = rect.get_height()
             ax.annotate('{}'.format(height),
@@ -116,6 +116,7 @@ def accuracy_graph(method,accuracy_list_knn, accuracy_list_dt, accuracy_list_svm
 
     plt.show()
 
+"""
 
 
 get_metrics(3)
