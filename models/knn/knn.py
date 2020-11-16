@@ -7,6 +7,10 @@ import pandas as pd
 from models.knn.knn_year import *
 from sklearn.metrics import classification_report, confusion_matrix, f1_score
 from sklearn.metrics import plot_confusion_matrix
+import time
+
+start_time = time.time()
+
 
 # update filepaths
 def run_knn(param_k, exp, **kwargs):
@@ -32,12 +36,12 @@ def run_knn(param_k, exp, **kwargs):
         # optimal k: 11
         elif exp == 4:
             # df = pd.read_csv("data/cleanneddata_exp4.csv")
-             df = pd.read_csv("../../data/cleanneddata_exp4.csv")
+            df = pd.read_csv("../../data/cleanneddata_exp4.csv")
 
         # optimal k: 11
         elif exp == 5:
             # df = pd.read_csv("data/cleanneddata_exp5.csv")
-             df = pd.read_csv("../../data/cleanneddata_exp5.csv")
+            df = pd.read_csv("../../data/cleanneddata_exp5.csv")
 
         y = np.array(df["decade"])
 
@@ -62,7 +66,7 @@ def run_knn(param_k, exp, **kwargs):
 
             # to show graph
             plt.show()
-            #plt.savefig("results/knn/optimal_k_exp5.png")
+            # plt.savefig("results/knn/optimal_k_exp5.png")
 
         # This is knn with predefined k
         else:
@@ -79,18 +83,19 @@ def run_knn(param_k, exp, **kwargs):
 
             y_pred = clf.predict(X_test)
 
-
             # Prints confusion matrix with presentation view.
             plot_confusion_matrix(clf, X_test, y_test)
-            plt.show()
+
+            # plt.savefig("../../results/knn/confusion_matrix_exp3.png")
+            # plt.savefig("../../results/knn/confusion_matrix_exp5.png")
+
+            print("---end of svm---")
 
             f1_micro = f1_score(y_test, y_pred, average='micro')
 
             return cv_scores_mean, f1_micro
 
             # return classification_report(y_test, y_pred, output_dict=True)
-
-            # print("Program took", time.time() - start_time, "s to run")
 
 
 def run_knn_with_find_k(X_train, X_test, y_train, y_test):
@@ -101,19 +106,27 @@ def run_knn_with_find_k(X_train, X_test, y_train, y_test):
         # values for k
         x_axis.append(k)
 
-        # build classifiere
+        # build classifiers
         clf = neighbors.KNeighborsClassifier(k)
 
-        # adopt the dataen x and y trainingsets
+        # adopt the data x and y training sets
         clf.fit(X_train, y_train)
 
         # to test the accuracy
         accuracy = clf.score(X_test, y_test)
 
+        # plot cm
         plot_confusion_matrix(clf, X_test, y_test)
-        plt.show()
 
         # values for accuracy
         y_axis.append(accuracy)
 
     return x_axis, y_axis
+
+
+# With optimal k for relevant experiments with time stamp
+# run_knn(80, 3)
+# print("---kNN for experiment 3 had a {} seconds execution time---".format(time.time() - start_time))
+
+# run_knn(11, 5)
+# print("---kNN for experiment 5 had a {} seconds execution time---".format(time.time() - start_time))

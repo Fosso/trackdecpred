@@ -6,13 +6,14 @@ from models.suppoertvectormachines.svm import run_svm_on_dataset
 
 import numpy as np
 
+
 def get_metrics(experiment):
     accuracy = []
     f1_score = []
 
     if experiment == 3:
-        #optimal k = 70
-        knn_cv_mean, knn_f1_micro = run_knn(70, 3)
+        # optimal k = 70
+        knn_cv_mean, knn_f1_micro = run_knn(80, 3)
         accuracy.append(knn_cv_mean)
         f1_score.append(knn_f1_micro)
 
@@ -20,7 +21,7 @@ def get_metrics(experiment):
         accuracy.append(dt_cv_mean)
         f1_score.append(dt_f1_micro)
 
-        #optimal solution is with Gaussian kernel
+        # optimal solution is with Gaussian kernel
         svm_cv_mean, svm_f1_micro = run_svm_on_dataset(3, "g", 0)
         accuracy.append(svm_cv_mean)
         f1_score.append(svm_f1_micro)
@@ -36,7 +37,7 @@ def get_metrics(experiment):
         f1_score.append(dt_f1_micro)
 
         # optimal solution is with Gaussian kernel
-        svm_cv_mean, svm_f1_micro = run_svm_on_dataset(5, "p", 3)
+        svm_cv_mean, svm_f1_micro = run_svm_on_dataset(5, "p", 4)
         accuracy.append(svm_cv_mean)
         f1_score.append(svm_f1_micro)
 
@@ -44,6 +45,7 @@ def get_metrics(experiment):
         "Can only do this for experiment 3 and 5"
 
     return accuracy, f1_score
+
 
 def accuracy_graph(experiment):
     accuracy, f1_score = get_metrics(experiment)
@@ -79,7 +81,7 @@ def accuracy_graph(experiment):
     ax.legend()
 
     def autolabel(rects):
-        #Attach a text label above each bar in *rects*, displaying its height.
+        # Attach a text label above each bar in *rects*, displaying its height.
         for rect in rects:
             height = rect.get_height()
             ax.annotate('{}'.format(height),
@@ -93,10 +95,12 @@ def accuracy_graph(experiment):
     autolabel(rects3)
 
     fig.tight_layout()
-    #plt.show()
-    #plt.savefig("../../results/accuracy_f1_results_exp5.png")
-    #plt.savefig("../../results/accuracy_f1_results_exp3.png")
+
+    # creating files for results
+    # plt.savefig("../../results/accuracy_f1_results_exp3.png")
+    # plt.savefig("../../results/accuracy_f1_results_exp5.png")
 
 
-accuracy_graph(3)
-
+# Optimal run returning graphs of accuracy and f1 scores.
+# accuracy_graph(3)
+# accuracy_graph(5)
