@@ -1,0 +1,17 @@
+EXPERIMENT 3
+
+---start of knn---
+k :  80 exp:  3
+results in: confusion_matrix_exp3.png
+---end of knn---
+---kNN for experiment 3 had a 44.434345960617065 seconds execution time---
+
+====================================================================================
+
+EXPERIMENT 5
+
+---start of knn---
+k :  11 exp:  5
+results in: confusion_matrix_exp5.png
+---end of svm---
+---kNN for experiment 5 had a 3.972285032272339 seconds execution time---
