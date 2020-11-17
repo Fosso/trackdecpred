@@ -1,3 +1,5 @@
+import inspect
+
 import numpy as np
 import pandas as pd
 from sklearn.svm import SVC
@@ -10,7 +12,7 @@ import time
 start_time = time.time()
 
 
-def svm(df, kernel, deg, **kwargs):
+def svm(df, kernel, deg, average, **kwargs):
     print("---start of svm---")
     global clf
     y = np.array(df["decade"])
@@ -45,6 +47,7 @@ def svm(df, kernel, deg, **kwargs):
     else:
         print("Kernel-function must be chosen")
 
+
     # Training and prediction
     clf.fit(X_train, y_train)
     y_pred = clf.predict(X_test)
@@ -56,7 +59,10 @@ def svm(df, kernel, deg, **kwargs):
     # print("Cross validated accuracy in SVM: ", cv_scores_mean)
     # print("This is svm with {} kernel {}: \n".format(kernel, (", with degree: ", deg)))
 
-    f1_micro = f1_score(y_test, y_pred, average='micro')
+    f1 = f1_score(y_test, y_pred, average=average)
+    print("f1::::: ", f1)
+
+
 
     # create confusion matrix
     plot_confusion_matrix(clf, X_test, y_test)
@@ -68,26 +74,28 @@ def svm(df, kernel, deg, **kwargs):
 
     print("---end of svm---")
 
-    return cv_scores_mean, f1_micro
+    return cv_scores_mean, f1
 
 
 # Update file paths dependant on if your running from main og locally.
 def run_svm_on_dataset(exp, kernel, deg):
     cv_scores_mean, f1_micro = 0, 0
     if exp == 3:
-        # svm_3 = pd.read_csv("data/cleanneddata_exp3")
-        df_3 = pd.read_csv("../../data/cleanneddata_exp3.csv")
-        cv_scores_mean, f1_micro = svm(df_3, kernel, deg)
+        df_3 = pd.read_csv("data/cleanneddata_exp3.csv")
+        # df_3 = pd.read_csv("../../data/cleanneddata_exp3.csv")
+        average = "weighted"
+        cv_scores_mean, f1 = svm(df_3, kernel, deg, average)
 
     elif exp == 5:
-        # df_5 = pd.read_csv("data/cleanneddata_exp3")
-        df_5 = pd.read_csv("../../data/cleanneddata_exp5.csv")
-        cv_scores_mean, f1_micro = svm(df_5, kernel, deg)
+        df_5 = pd.read_csv("data/cleanneddata_exp5.csv")
+        # df_5 = pd.read_csv("../../data/cleanneddata_exp5.csv")
+        average = "micro"
+        cv_scores_mean, f1 = svm(df_5, kernel, deg, average)
 
     else:
         print("DT is only implemented for experiment 3 and 5")
 
-    return cv_scores_mean, f1_micro
+    return cv_scores_mean, f1
 
 
 # With optimal methods for relevant experiments with time stamp
@@ -99,8 +107,9 @@ def run_svm_on_dataset(exp, kernel, deg):
 
 
 # For dataset 5
+
+# run_svm_on_dataset(5, "l", 0)
 """
-run_svm_on_dataset(5, "l", 0)
 run_svm_on_dataset(5, "s", 0)
 run_svm_on_dataset(5, "g", 0)
 run_svm_on_dataset(5, "p", 2)
@@ -110,8 +119,9 @@ run_svm_on_dataset(5, "p", 4)
 """
 
 # For dataset 3
+
+#run_svm_on_dataset(3, "l", 0)
 """
-run_svm_on_dataset(3, "l", 0)
 run_svm_on_dataset(3, "s", 0)
 run_svm_on_dataset(3, "g", 0)
 run_svm_on_dataset(3, "p", 2)

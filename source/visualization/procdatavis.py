@@ -17,6 +17,7 @@ def descriptive():
     print(df.describe(include='all'))
 
 
+
 def plot_histogram():
 
     df.drop(["decade"], axis=1, inplace=True)
@@ -101,8 +102,7 @@ def radarplot2():
     )
 
     fig.show()
-
-
+    
 def scatter_plot():
     #df = pd.read_csv('../../data/cleanneddata_exp3.csv')
     df = pd.read_csv('../../data/cleanneddata_exp5.csv')
@@ -113,8 +113,8 @@ def scatter_plot():
     #sns.lmplot('acousticness', 'energy', df, hue='decade', fit_reg=False)
     fig: object = plt.gcf()
     fig.set_size_inches(15, 10)
-    plt.savefig("../../results/exploration/scatter_plot_exp5_acousticness_energy.png")
-    #plt.show()
+    #plt.savefig("../../results/exploration/scatter_plot_exp5_acousticness_energy.png")
+    plt.show()
 
 
 # if __name__ == '__main__':
@@ -124,3 +124,4 @@ def scatter_plot():
 #     # radarplot2()
 #     lineplot()
 #     scatter_plot()
+

@@ -82,6 +82,15 @@ def run_knn(param_k, exp, optimal):
 
             y_pred = clf.predict(X_test)
 
+            # f1 weighted (macro) for exp 3
+            if exp == 3:
+                f1 = f1_score(y_test, y_pred, average='weighted')
+
+
+            # f1 micro for exp 5 (and all the other experiments)
+            else:
+                f1 = f1_score(y_test, y_pred, average='micro')
+
             # Prints confusion matrix with presentation view.
             plot_confusion_matrix(clf, X_test, y_test)
 
@@ -90,9 +99,7 @@ def run_knn(param_k, exp, optimal):
 
             print("---end of knn---")
 
-            f1_micro = f1_score(y_test, y_pred, average='micro')
-
-            return cv_scores_mean, f1_micro
+            return cv_scores_mean, f1
 
             # return classification_report(y_test, y_pred, output_dict=True)
 
@@ -118,7 +125,6 @@ def run_knn_with_find_k(X_train, X_test, y_train, y_test):
         y_axis.append(accuracy)
 
     return x_axis, y_axis
-
 
 # With optimal k for relevant experiments with time stamp
 # run_knn(80, 3)
