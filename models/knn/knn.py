@@ -13,11 +13,11 @@ start_time = time.time()
 
 
 # update filepaths
-def run_knn(param_k, exp, **kwargs):
+def run_knn(param_k, exp, optimal):
     print("---start of knn---")
     print("k : ", param_k, "exp: ", exp)
-    # df = pd.read_csv("data/cleanneddata_exp2.csv")
-    df = pd.read_csv("../../data/cleanneddata_exp3.csv")
+    df = pd.read_csv("data/cleanneddata_exp2.csv")
+    # df = pd.read_csv("../../data/cleanneddata_exp3.csv")
     # df = []
     # optimal k: 103
     if exp == 1:
@@ -27,21 +27,20 @@ def run_knn(param_k, exp, **kwargs):
         # optimal k: 70
         if exp == 2:
             df = pd.read_csv("data/cleanneddata_exp2.csv")
-
             # df = pd.read_csv("../../data/cleanneddata_exp2.csv")
-        # optimal k: 70
+        # optimal k: 80
         elif exp == 3:
-            # df = pd.read_csv("data/cleanneddata_exp3.csv")
-            df = pd.read_csv("../../data/cleanneddata_exp3.csv")
+            df = pd.read_csv("data/cleanneddata_exp3.csv")
+            # df = pd.read_csv("../../data/cleanneddata_exp3.csv")
         # optimal k: 11
         elif exp == 4:
-            # df = pd.read_csv("data/cleanneddata_exp4.csv")
-            df = pd.read_csv("../../data/cleanneddata_exp4.csv")
+            df = pd.read_csv("data/cleanneddata_exp4.csv")
+            # df = pd.read_csv("../../data/cleanneddata_exp4.csv")
 
         # optimal k: 11
         elif exp == 5:
-            # df = pd.read_csv("data/cleanneddata_exp5.csv")
-            df = pd.read_csv("../../data/cleanneddata_exp5.csv")
+            df = pd.read_csv("data/cleanneddata_exp5.csv")
+            # df = pd.read_csv("../../data/cleanneddata_exp5.csv")
 
         y = np.array(df["decade"])
 
@@ -53,8 +52,8 @@ def run_knn(param_k, exp, **kwargs):
         # build classifier with k = 12
         # k for vanlig datasett 1930-1970 = 56
 
-        # This should be if optimal... Just a placeholder
-        if param_k == 10:
+        # If main.py is executed with -o flag
+        if optimal:
             x_axis2, y_axis2 = run_knn_with_find_k(X_train, X_test, y_train, y_test)
 
             # create dataframe using k-value and accuracy
@@ -79,7 +78,7 @@ def run_knn(param_k, exp, **kwargs):
 
             # Cross validate accuracy
             cv_scores_mean = np.mean(cv_scores)
-            # print("Cross validated accuracy: ", cv_scores_mean)
+            print("Cross validated accuracy: ", cv_scores_mean)
 
             y_pred = clf.predict(X_test)
 
@@ -89,7 +88,7 @@ def run_knn(param_k, exp, **kwargs):
             # plt.savefig("../../results/knn/confusion_matrix_exp3.png")
             # plt.savefig("../../results/knn/confusion_matrix_exp5.png")
 
-            print("---end of svm---")
+            print("---end of knn---")
 
             f1_micro = f1_score(y_test, y_pred, average='micro')
 
@@ -114,9 +113,6 @@ def run_knn_with_find_k(X_train, X_test, y_train, y_test):
 
         # to test the accuracy
         accuracy = clf.score(X_test, y_test)
-
-        # plot cm
-        plot_confusion_matrix(clf, X_test, y_test)
 
         # values for accuracy
         y_axis.append(accuracy)
