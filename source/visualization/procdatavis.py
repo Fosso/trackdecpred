@@ -15,6 +15,7 @@ def descriptive():
     print(df.describe(include='all'))
 
 
+
 def plot_histogram():
     df.hist(figsize=(20, 20))
     plt.show()
@@ -96,7 +97,7 @@ def radarplot2():
 
 if __name__ == '__main__':
     descriptive()
-    plot_histogram()
+    # plot_histogram()
     # radarplot()
     # radarplot2()
-    lineplot()
+    #lineplot()

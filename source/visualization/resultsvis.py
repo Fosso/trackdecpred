@@ -13,33 +13,33 @@ def get_metrics(experiment):
 
     if experiment == 3:
         # optimal k = 70
-        knn_cv_mean, knn_f1_micro = run_knn(80, 3)
+        knn_cv_mean, knn_f1 = run_knn(80, 3, False)
         accuracy.append(knn_cv_mean)
-        f1_score.append(knn_f1_micro)
+        f1_score.append(knn_f1)
 
-        dt_cv_mean, dt_f1_micro = run_dt_on_dataset(3)
+        dt_cv_mean, dt_f1 = run_dt_on_dataset(3)
         accuracy.append(dt_cv_mean)
-        f1_score.append(dt_f1_micro)
+        f1_score.append(dt_f1)
 
         # optimal solution is with Gaussian kernel
-        svm_cv_mean, svm_f1_micro = run_svm_on_dataset(3, "g", 0)
+        svm_cv_mean, svm_f1 = run_svm_on_dataset(3, "g", 0)
         accuracy.append(svm_cv_mean)
-        f1_score.append(svm_f1_micro)
+        f1_score.append(svm_f1)
 
     elif experiment == 5:
         # optimal k = 70
-        knn_cv_mean, knn_f1_micro = run_knn(11, 5)
+        knn_cv_mean, knn_f1 = run_knn(11, 5, False)
         accuracy.append(knn_cv_mean)
-        f1_score.append(knn_f1_micro)
+        f1_score.append(knn_f1)
 
-        dt_cv_mean, dt_f1_micro = run_dt_on_dataset(5)
+        dt_cv_mean, dt_f1 = run_dt_on_dataset(5)
         accuracy.append(dt_cv_mean)
-        f1_score.append(dt_f1_micro)
+        f1_score.append(dt_f1)
 
         # optimal solution is with Gaussian kernel
-        svm_cv_mean, svm_f1_micro = run_svm_on_dataset(5, "p", 4)
+        svm_cv_mean, svm_f1 = run_svm_on_dataset(5, "p", 4)
         accuracy.append(svm_cv_mean)
-        f1_score.append(svm_f1_micro)
+        f1_score.append(svm_f1)
 
     else:
         "Can only do this for experiment 3 and 5"
@@ -95,7 +95,6 @@ def accuracy_graph(experiment):
     autolabel(rects3)
 
     fig.tight_layout()
-
     # creating files for results
     # plt.savefig("../../results/accuracy_f1_results_exp3.png")
     # plt.savefig("../../results/accuracy_f1_results_exp5.png")
