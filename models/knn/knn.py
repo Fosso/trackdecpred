@@ -71,7 +71,8 @@ def run_knn(param_k, exp, optimal):
         else:
 
             k = param_k
-            clf = neighbors.KNeighborsClassifier(k)
+            clf = neighbors.KNeighborsClassifier(k, algorithm='auto', weights='uniform', p=2)
+            # print("INFO::", clf.get_params())
 
             cv_scores = cross_val_score(clf, X_train, y_train)
             clf.fit(X_train, y_train)
