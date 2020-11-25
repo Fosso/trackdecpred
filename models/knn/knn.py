@@ -12,13 +12,12 @@ import time
 start_time = time.time()
 
 
-# update filepaths
+# Update file paths dependant on if your running from main og locally.
 def run_knn(param_k, exp, optimal):
     print("---start of knn---")
-    print("k : ", param_k, "exp: ", exp)
     df = pd.read_csv("data/cleanneddata_exp2.csv")
     # df = pd.read_csv("../../data/cleanneddata_exp3.csv")
-    # df = []
+
     # optimal k: 103
     if exp == 1:
         knn_exp1(param_k)
@@ -49,10 +48,7 @@ def run_knn(param_k, exp, optimal):
         # Divide the set in 20% for testing 80% for training
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 
-        # build classifier with k = 12
-        # k for vanlig datasett 1930-1970 = 56
-
-        # If main.py is executed with -o flag
+        # if optimal arg is true, run iterative experiment on optimal k
         if optimal:
             x_axis2, y_axis2 = run_knn_with_find_k(X_train, X_test, y_train, y_test)
 
@@ -67,17 +63,16 @@ def run_knn(param_k, exp, optimal):
             plt.show()
             # plt.savefig("results/knn/optimal_k_exp5.png")
 
-        # This is knn with predefined k
+        # this is knn with predefined optimal k
         else:
 
+            # build classifier with best configuration and optimal k
             k = param_k
             clf = neighbors.KNeighborsClassifier(k, algorithm='auto', weights='uniform', p=2)
-            # print("INFO::", clf.get_params())
-
             cv_scores = cross_val_score(clf, X_train, y_train)
             clf.fit(X_train, y_train)
 
-            # Cross validate accuracy
+            # cross validate accuracy
             cv_scores_mean = np.mean(cv_scores)
             print("Cross validated accuracy: ", cv_scores_mean)
 
@@ -86,7 +81,6 @@ def run_knn(param_k, exp, optimal):
             # f1 weighted (macro) for exp 3
             if exp == 3:
                 f1 = f1_score(y_test, y_pred, average='weighted')
-
 
             # f1 micro for exp 5 (and all the other experiments)
             else:
@@ -102,18 +96,18 @@ def run_knn(param_k, exp, optimal):
 
             return cv_scores_mean, f1
 
-            # return classification_report(y_test, y_pred, output_dict=True)
-
 
 def run_knn_with_find_k(X_train, X_test, y_train, y_test):
+    # vars for storing accuracy for different values for max depth
     x_axis = []
     y_axis = []
 
+    # loop for iterative experiment for k, values from 1-20, can be changed
     for k in range(1, 20, 1):
-        # values for k
+        # append values for k
         x_axis.append(k)
 
-        # build classifiers
+        # build classifier with current k
         clf = neighbors.KNeighborsClassifier(k)
 
         # adopt the data x and y training sets

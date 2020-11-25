@@ -1,4 +1,3 @@
-import matplotlib
 import pandas as pd
 from pandas import DataFrame
 import seaborn as sns  # for data visualization
@@ -20,19 +19,20 @@ def dt(df, average, md, optimal):
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20)
 
+    # if optimal arg is true, run iterative experiment on max depth
     if optimal:
         x_axis2, y_axis2 = run_dt_with_find_depth(df)
 
         # create dataframe using max depth value and accuracy
         df_md = pd.DataFrame({"max_depth_value": x_axis2, "accuracy": y_axis2})
 
-        # Draw line plot
+        # draw line plot
         sns.set_style("darkgrid")
         sns.lineplot(x="max_depth_value", y="accuracy", dashes=False, marker="o", data=df_md)
 
         # to show graph
         plt.show()
-        #plt.savefig("results/dt/optimal_md_exp5.png")
+        # plt.savefig("results/dt/optimal_md_exp5.png")
         # should only be used to find optimal n, therfore doesnt return anything, 0,0 to stop it from crash.
         return 0, 0
     else:
@@ -45,15 +45,13 @@ def dt(df, average, md, optimal):
         tree.plot_tree(clf)
         # plt.show()
         # To save example of tree with max depth 2
-        #plt.savefig("results/dt/tree_md_2_example.png")
-
-
+        # plt.savefig("results/dt/tree_md_2_example.png")
 
         y_pred = clf.predict(X_test)
 
         cv_scores = cross_val_score(clf, X_train, y_train)
 
-        # Cross validate accuracy
+        # cross validate accuracy
         cv_scores_mean = np.mean(cv_scores)
         # print("Cross validated accuracy: ", cv_scores_mean)
 
@@ -69,10 +67,8 @@ def dt(df, average, md, optimal):
         return cv_scores_mean, f1
 
 
-# update filepaths
+# Update file paths dependant on if your running from main og locally.
 def run_dt_on_dataset(exp, md, optimal):
-    # print("---start of dt---", "exp is:::: ", exp, "optimal max depth is::::", md, "optimal is:::: ", optimal)
-
     cv_scores_mean, f1 = 0, 0
     if exp == 3:
         df_3 = pd.read_csv("data/cleanneddata_exp3.csv")
@@ -101,6 +97,7 @@ def run_dt_on_dataset(exp, md, optimal):
 
 
 def run_dt_with_find_depth(df):
+    # vars for storing accuracy for different values for max depth
     x_axis = []
     y_axis = []
 
@@ -110,29 +107,20 @@ def run_dt_with_find_depth(df):
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 
+    # loop for iterative experiment for max depth, values from 1-20, can be changed
     for d in range(1, 20, 1):
-        # values for k
+        # append values for max depth
         x_axis.append(d)
 
-        # build classifiers
-
-        # set max_depth
+        # build classifier and set max_depth
         clf = tree.DecisionTreeClassifier(max_depth=d)
         clf = clf.fit(X_train, y_train)
 
-        # adopt the data x and y training sets
-
-        # print("DEPTH in for depth loop::::", clf.get_depth())
-
-        # to test the accuracy
-        # accuracy = clf.score(X_test, y_test)
+        # cross validate accurcary for current iteratiation
         cv_scores = cross_val_score(clf, X_train, y_train)
         cv_scores_mean = np.mean(cv_scores)
 
-        # print("ACC in for depth loop::::", accuracy)
-        # print("CV score in for depth loop::::", cv_scores_mean)
-
-        # values for accuracy
+        # append values for accuracy
         y_axis.append(cv_scores_mean)
 
     return x_axis, y_axis
@@ -144,7 +132,7 @@ def run_dt_with_find_depth(df):
 # run_dt_on_dataset(5)
 # print("---kNN for experiment 5 had a {} seconds execution time---".format(time.time() - start_time))
 
-
+# Results
 # exp_1: 9%
 # exp_2: 31%
 # exp_3: 39%

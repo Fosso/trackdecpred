@@ -33,7 +33,7 @@ def proc_and_norm_gen(df):
     df["tempo"] = df["tempo"].round(4)
     df["valence"] = df["valence"].round(4)
 
-    # Normlization of colomn tempo
+    # Normlization of column tempo
     df_tempo = pd.DataFrame(df["tempo"])
     A = df_tempo.values
     min_max_scaler = preprocessing.MinMaxScaler()
@@ -41,18 +41,19 @@ def proc_and_norm_gen(df):
     df_tempo = pd.DataFrame(x_scaled).round(4)
     df["tempo"] = df_tempo
 
-    # Normlization of colomn loudness
+    # Normlization of column loudness
     df_loudness = pd.DataFrame(df["loudness"])
-    A = df_loudness.values  # returnerer et array
+    A = df_loudness.values  # returns array
     min_max_scaler = preprocessing.MinMaxScaler()
     x_scaled = min_max_scaler.fit_transform(A)
     df_loudness = pd.DataFrame(x_scaled).round(4)
     df["loudness"] = df_loudness
 
-    #sort by year
+    # Sort by year
     df.sort_values(by=["year"])
 
     return df
+
 
 # Processing data for experiment two (year)
 def proc_exp1(df):
@@ -101,7 +102,7 @@ def proc_exp3(df):
 def proc_exp4(df):
     df_exp4 = year_to_decade(df)
     # Removing uninteresting rows
-    #remove_list = [1930, 1940, 1950, 1960, 1970, 1980, 1990, 2000, 2010]
+    # remove_list = [1930, 1940, 1950, 1960, 1970, 1980, 1990, 2000, 2010]
     df_exp4 = df_exp4[df_exp4.decade != 1930]
     df_exp4 = df_exp4[df_exp4.decade != 1940]
     df_exp4 = df_exp4[df_exp4.decade != 1950]
@@ -113,6 +114,7 @@ def proc_exp4(df):
     df_exp4 = df_exp4[df_exp4.decade != 2010]
 
     return df_exp4
+
 
 # Processing data for experiment four (1930 vs. 1980, decade)
 def proc_exp5(df_5):
@@ -130,7 +132,8 @@ def proc_exp5(df_5):
 
     return df_exp5
 
-# on run, this gets expectued
+
+# on run, this gets exectuted
 if __name__ == '__main__':
     # Creates csv file for correct problems
 
@@ -158,5 +161,3 @@ if __name__ == '__main__':
     df_proc_5 = proc_and_norm_gen(df_read_5)
     df_exp5_cleaned = proc_exp5(df_proc_5)
     df_exp5_cleaned.to_csv(r"../../data/cleanneddata_exp5.csv", index=False)
-
-
