@@ -1,5 +1,7 @@
 # TDT4173 Machine Learning Project
-
+Repository for project titled trackdecpred. Predict which decade a track is released. Methods implemented with
+scikit-learn are kNN, decision trees and SVM. Includes datasets, data processing and exploration, results, 
+and visualization.
 ## Table Of Content
 
 * [Folder Structure](https://github.com/Fosso/trackdecpred/tree/readme#folder-structure)
@@ -140,14 +142,14 @@ Builds knn classifier, fits the model, evaluates the performance of the model. C
 
 
 
-### procdatavis.py
+#### procdatavis.py
 
 Visualization for data exploration. Needs to be run seperately.
 
-### resultvis.py
+#### resultvis.py
 
 Visualization for results. Needs to be run seperately.
 
-### generaldataprocess.py
+#### generaldataprocess.py
 
 Pre-processing of dataset. Not necessary to run as subsets are created and stored in the repository under the directory "data".
