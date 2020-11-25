@@ -1,5 +1,20 @@
 # TDT4173 Machine Learning Project
 
+## Table Of Content
+
+* [Folder Structure](https://github.com/Fosso/trackdecpred/tree/readme#folder-structure)
+* [How To Run](https://github.com/Fosso/trackdecpred/tree/readme#how-to-run)
+* [Main Files](https://github.com/Fosso/trackdecpred/tree/readme#main-files)
+    * [main.py](https://github.com/Fosso/trackdecpred/tree/readme#mainpy)
+    * [decisiontree.py](https://github.com/Fosso/trackdecpred/tree/readme#decisiontreepy)
+    * [knn.py](https://github.com/Fosso/trackdecpred/tree/readme#knnpy)
+    * [svm.py](https://github.com/Fosso/trackdecpred/tree/readme#svmpy)
+    * [knn_year.py](https://github.com/Fosso/trackdecpred/tree/readme#knn_yearpy)
+    * [knn_test.py](https://github.com/Fosso/trackdecpred/tree/readme#knn_yearpy)
+    * [procdatavis.py](https://github.com/Fosso/trackdecpred/tree/readme#procdatavispy)
+    * [resultvis.py](https://github.com/Fosso/trackdecpred/tree/readme#resultvispy)
+    * [generaldataprocess.py](https://github.com/Fosso/trackdecpred/tree/readme#generaldataprocesspy)
+
 ## Folder Structure 
 
 
@@ -82,7 +97,7 @@
 ```
 
 
-## How to run
+## How To Run
 
 ```bash
 conda create --name <environment-name> --file <requirements.txt>
@@ -97,7 +112,7 @@ conda install
 ```
 
 
-# Main Files
+## Main Files
 ### main.py
 
 Example 1, runs knn for experiment 3 with search for optimal k: 
