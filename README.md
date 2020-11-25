@@ -5,15 +5,6 @@
 * [Folder Structure](https://github.com/Fosso/trackdecpred/tree/readme#folder-structure)
 * [How To Run](https://github.com/Fosso/trackdecpred/tree/readme#how-to-run)
 * [Main Files](https://github.com/Fosso/trackdecpred/tree/readme#main-files)
-    * [main.py](https://github.com/Fosso/trackdecpred/tree/readme#mainpy)
-    * [decisiontree.py](https://github.com/Fosso/trackdecpred/tree/readme#decisiontreepy)
-    * [knn.py](https://github.com/Fosso/trackdecpred/tree/readme#knnpy)
-    * [svm.py](https://github.com/Fosso/trackdecpred/tree/readme#svmpy)
-    * [knn_year.py](https://github.com/Fosso/trackdecpred/tree/readme#knn_yearpy)
-    * [knn_test.py](https://github.com/Fosso/trackdecpred/tree/readme#knn_yearpy)
-    * [procdatavis.py](https://github.com/Fosso/trackdecpred/tree/readme#procdatavispy)
-    * [resultvis.py](https://github.com/Fosso/trackdecpred/tree/readme#resultvispy)
-    * [generaldataprocess.py](https://github.com/Fosso/trackdecpred/tree/readme#generaldataprocesspy)
 
 ## Folder Structure 
 
@@ -97,7 +88,7 @@
 ```
 
 
-## How To Run
+## How To Setup Environment
 
 ```bash
 conda create --name <environment-name> --file <requirements.txt>
@@ -127,22 +118,22 @@ main.py -svm -exp 5
 Hyperparameters can be changed by editing a few lines of code in the file.
 
 
-### decisiontree.py
+#### decisiontree.py
 Builds dt classifier, fits the model, evaluates the performance of the model. Contains method for searching for optimal max depth by iterative experimentation.
 
-### knn.py
+#### knn.py
 Builds knn classifier, fits the model, evaluates the performance of the model. Contains method for searching for optimal k by iterative experimentation.
 
 
-### svm.py
+#### svm.py
 Builds svm classifier, fits the model, evaluates the performance of the model.
 
 
-### knn_year.py
+#### knn_year.py
 This file is solely for experiment 1(not one of the main experiments)
 Builds knn classifier, fits the model, evaluates the performance of the model. Contains method for searching for optimal k by iterative experimentation.
 
-### knn_test.py
+#### knn_test.py
 To test the knn classifier for a song that is not in the dataset. Audio features are gathered from the Spotify Web API.
 
 Builds knn classifier, fits the model, evaluates the performance of the model. Contains method for searching for optimal k by iterative experimentation.

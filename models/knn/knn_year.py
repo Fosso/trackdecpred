@@ -30,15 +30,16 @@ def knn_exp1(param_k):
     interval = 5
     accuracy_list = []
 
-
+    # loop for checking accuracy +- 5 year
     for i in range(len(X_test)):
         if y_test[i] + interval >= prediction[i] >= y_test[i] - interval:
             correct += 1
             accuracy2 = (correct / float(len(X_test)) * 100.0)
-            # print("Accuracy inni for: ", accuracy2)
             accuracy_list.append(accuracy2)
 
     print("accuracy: ", accuracy2)
+
+    # old way of making this early experiment to run optimal k, k has to be set to 10 in main.py
     if param_k == 10:
         x_axis2, y_axis2 = run_knn_with_find_k(X_train, X_test, y_train, y_test)
 
@@ -50,30 +51,32 @@ def knn_exp1(param_k):
         # plt.savefig("results/knn/optimal_k_exp1.png")
         plt.show()
 
+
 def run_knn_with_find_k(X_train, X_test, y_train, y_test):
+    # vars for storing accuracy for different values for max depth
     x_axis = []
     y_axis = []
-
-    for k in range (90, 110, 1):
-        # k values
+    # loop for iterative experiment for k, values from 90-10, can be changed
+    for k in range(90, 110, 1):
+        # append k values
         x_axis.append(k)
 
         # build classifiere
         clf = neighbors.KNeighborsClassifier(k)
-
+        # fit model
         clf.fit(X_train, y_train)
 
         prediction = clf.predict(X_test)
         correct = 0
         interval = 5
         accuracy_list = []
+        # loop for counting number of correct predictions
         for i in range(len(X_test)):
             if y_test[i] + interval >= prediction[i] >= y_test[i] - interval:
                 correct += 1
 
         accuracy2 = (correct / float(len(X_test)) * 100.0)
+        # append accuracy values
         y_axis.append(accuracy2)
-
-        # y_axis.append(accuracy_list)
 
     return x_axis, y_axis

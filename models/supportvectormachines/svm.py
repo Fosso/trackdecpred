@@ -19,9 +19,8 @@ def svm(df, kernel, deg, average, **kwargs):
     X = np.array(df.drop(["decade"], axis=1))
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20)
-
+    # build SVM with different kernels and degrees, according to args from main.py
     if kernel == "l":
-        print("reached kernel == l")
         kernel = "linear"
         clf = SVC(kernel='linear')
     elif kernel == "p":
@@ -47,22 +46,19 @@ def svm(df, kernel, deg, average, **kwargs):
     else:
         print("Kernel-function must be chosen")
 
-
-    # Training and prediction
+    # training and prediction
     clf.fit(X_train, y_train)
     y_pred = clf.predict(X_test)
 
-    # Cross validate and return accuracy mean
+    # cross validate and return accuracy mean
     cv_scores = cross_val_score(clf, X_train, y_train)
     cv_scores_mean = np.mean(cv_scores)
 
     # print("Cross validated accuracy in SVM: ", cv_scores_mean)
     # print("This is svm with {} kernel {}: \n".format(kernel, (", with degree: ", deg)))
 
+    # calculate f1-score
     f1 = f1_score(y_test, y_pred, average=average)
-    print("f1::::: ", f1)
-
-
 
     # create confusion matrix
     plot_confusion_matrix(clf, X_test, y_test)

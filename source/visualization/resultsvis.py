@@ -3,10 +3,11 @@ import matplotlib.pyplot as plt
 from models.knn.knn import run_knn
 from models.decisiontree.dt import run_dt_on_dataset
 from models.supportvectormachines.svm import run_svm_on_dataset
-
 import numpy as np
 
 
+# Runs models with optimal hyperparams and get metrics(accuracy and f1-score), for experiment 3 or 5
+# Decide which experiment to show results for in the bottom
 def get_metrics(experiment):
     accuracy = []
     f1_score = []
@@ -46,7 +47,7 @@ def get_metrics(experiment):
 
     return accuracy, f1_score
 
-
+# Shows plot that comparises accuracy and f1 score for experiment 3 or 5
 def accuracy_graph(experiment):
     accuracy, f1_score = get_metrics(experiment)
     labels = ['Accuracy', 'F1 score']
@@ -80,6 +81,7 @@ def accuracy_graph(experiment):
 
     ax.legend()
 
+    # for aligning labels in the plot
     def autolabel(rects):
         # Attach a text label above each bar in *rects*, displaying its height.
         for rect in rects:
@@ -94,12 +96,13 @@ def accuracy_graph(experiment):
     autolabel(rects2)
     autolabel(rects3)
 
+    # Show plot
     fig.tight_layout()
     # creating files for results
     # plt.savefig("../../results/accuracy_f1_results_exp3.png")
     # plt.savefig("../../results/accuracy_f1_results_exp5.png")
 
-
-# Optimal run returning graphs of accuracy and f1 scores.
+# Decide which experiment to run, 3 or 5
+# Optimal run returning plots of accuracy and f1 scores.
 # accuracy_graph(3)
 # accuracy_graph(5)
