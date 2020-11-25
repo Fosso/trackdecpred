@@ -1,7 +1,7 @@
 import argparse
 from models.decisiontree.dt import run_dt_on_dataset
 from models.knn.knn import run_knn
-from models.suppoertvectormachines.svm import run_svm_on_dataset
+from models.supportvectormachines.svm import run_svm_on_dataset
 
 
 def parse_args():
