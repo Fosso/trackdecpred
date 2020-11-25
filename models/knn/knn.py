@@ -16,8 +16,8 @@ start_time = time.time()
 def run_knn(param_k, exp, optimal):
     print("---start of knn---")
     print("k : ", param_k, "exp: ", exp)
-    df = pd.read_csv("data/cleanneddata_exp2.csv")
-    # df = pd.read_csv("../../data/cleanneddata_exp3.csv")
+    # df = pd.read_csv("data/cleanneddata_exp2.csv")
+    df = pd.read_csv("../../data/cleanneddata_exp6.csv")
     # df = []
     # optimal k: 103
     if exp == 1:
@@ -30,8 +30,8 @@ def run_knn(param_k, exp, optimal):
             # df = pd.read_csv("../../data/cleanneddata_exp2.csv")
         # optimal k: 80
         elif exp == 3:
-            df = pd.read_csv("data/cleanneddata_exp3.csv")
-            # df = pd.read_csv("../../data/cleanneddata_exp3.csv")
+            # df = pd.read_csv("data/cleanneddata_exp6.csv")
+            df = pd.read_csv("../../data/cleanneddata_exp6.csv")
         # optimal k: 11
         elif exp == 4:
             df = pd.read_csv("data/cleanneddata_exp4.csv")
@@ -71,7 +71,7 @@ def run_knn(param_k, exp, optimal):
         else:
 
             k = param_k
-            clf = neighbors.KNeighborsClassifier(k, algorithm='auto', weights='uniform', p=2)
+            clf = neighbors.KNeighborsClassifier(k, algorithm='auto', weights='distance', p=1)
             # print("INFO::", clf.get_params())
 
             cv_scores = cross_val_score(clf, X_train, y_train)
@@ -94,7 +94,7 @@ def run_knn(param_k, exp, optimal):
 
             # Prints confusion matrix with presentation view.
             plot_confusion_matrix(clf, X_test, y_test)
-
+            plt.show()
             # plt.savefig("../../results/knn/confusion_matrix_exp3.png")
             # plt.savefig("../../results/knn/confusion_matrix_exp5.png")
 
@@ -133,3 +133,5 @@ def run_knn_with_find_k(X_train, X_test, y_train, y_test):
 
 # run_knn(11, 5)
 # print("---kNN for experiment 5 had a {} seconds execution time---".format(time.time() - start_time))
+
+run_knn(80, 3, False)

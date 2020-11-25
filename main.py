@@ -33,6 +33,8 @@ if __name__ == '__main__':
         model = run_knn(11, args.experiment, args.optimal)
     elif args.knn and args.experiment == 5:
         model = run_knn(11, args.experiment, args.optimal)
+    elif args.knn and args.experiment == 5:
+        model = run_knn(11, args.experiment, args.optimal)
 
     # dt
     elif args.dt and args.experiment == 3:

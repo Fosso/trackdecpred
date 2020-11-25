@@ -130,7 +130,19 @@ def proc_exp5(df_5):
 
     return df_exp5
 
+def proc_exp6():
+    df_exp6 = readfile('../../data/cleanneddata_exp3.csv')
+    print( df_exp6.head())
+    df_exp6 = df_exp6[df_exp6.decade != 1930]
+    df_exp6 = df_exp6[df_exp6.decade != 1940]
+    df_exp6 = df_exp6[df_exp6.decade != 1950]
+
+    df_exp6.to_csv(r"../../data/cleanneddata_exp6.csv", index=False)
+
+    return df_exp6
+proc_exp6()
 # on run, this gets expectued
+"""
 if __name__ == '__main__':
     # Creates csv file for correct problems
 
@@ -158,5 +170,5 @@ if __name__ == '__main__':
     df_proc_5 = proc_and_norm_gen(df_read_5)
     df_exp5_cleaned = proc_exp5(df_proc_5)
     df_exp5_cleaned.to_csv(r"../../data/cleanneddata_exp5.csv", index=False)
-
+"""
 
