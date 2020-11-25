@@ -3,8 +3,8 @@
 ## Table Of Content
 
 * [Folder Structure](https://github.com/Fosso/trackdecpred/tree/readme#folder-structure)
-* [How To Run](https://github.com/Fosso/trackdecpred/tree/readme#how-to-run)
-* [Main Files](https://github.com/Fosso/trackdecpred/tree/readme#main-files)
+* [How To Setup Environment](https://github.com/Fosso/trackdecpred/tree/readme#how-to-run)
+* [Description of Main Files](https://github.com/Fosso/trackdecpred/tree/readme#main-files)
 
 ## Folder Structure 
 
@@ -103,7 +103,7 @@ conda install
 ```
 
 
-## Main Files
+## Description of Main Files
 ### main.py
 
 Example 1, runs knn for experiment 3 with search for optimal k: 
