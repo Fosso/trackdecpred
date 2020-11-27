@@ -1,0 +1,158 @@
+EXP3
+
+Accuracy:  0.3934592043155765
+[[   0  704  892   69   21   44]
+ [   1 1431 1385  107   28   68]
+ [   5 1068 2104  569  131   95]
+ [   1  413 1302 1142  684  456]
+ [   0  136  527  817 1030 1511]
+ [   1  186  330  440  602 2462]]
+              precision    recall  f1-score   support
+        1930       0.00      0.00      0.00      1730
+        1940       0.36      0.47      0.41      3020
+        1950       0.32      0.53      0.40      3972
+        1960       0.36      0.29      0.32      3998
+        1970       0.41      0.26      0.32      4021
+        1980       0.53      0.61      0.57      4021
+    accuracy                           0.39     20762
+   macro avg       0.33      0.36      0.34     20762
+weighted avg       0.37      0.39      0.37     20762
+
+This is svm with linear kernel (', with degree: ', 0):
+Accuracy:  0.39081013389846836
+[[   0  714 1002   72   18   38]
+ [   0 1444 1322  103   35   74]
+ [   5 1081 2104  535  161   92]
+ [   1  414 1329 1107  678  473]
+ [   1  140  527  806 1040 1510]
+ [   1  169  311  427  609 2419]]
+              precision    recall  f1-score   support
+        1930       0.00      0.00      0.00      1844
+        1940       0.36      0.48      0.42      2978
+        1950       0.32      0.53      0.40      3978
+        1960       0.36      0.28      0.31      4002
+        1970       0.41      0.26      0.32      4024
+        1980       0.53      0.61      0.57      3936
+    accuracy                           0.39     20762
+   macro avg       0.33      0.36      0.34     20762
+weighted avg       0.36      0.39      0.37     20762
+This is svm with Sigmoid kernel (', with degree: ', 0):
+Accuracy:  0.18601290819766883
+[[ 265  112  289  245  847   12]
+ [ 847  224  538  346 1045   13]
+ [1021  332  613  837 1076   14]
+ [1090  262  336 1259 1013   86]
+ [1039  270  246 1087 1176  234]
+ [1029  237  220  743 1434  325]]
+              precision    recall  f1-score   support
+        1930       0.05      0.15      0.08      1770
+        1940       0.16      0.07      0.10      3013
+        1950       0.27      0.16      0.20      3893
+        1960       0.28      0.31      0.29      4046
+        1970       0.18      0.29      0.22      4052
+        1980       0.48      0.08      0.14      3988
+    accuracy                           0.19     20762
+   macro avg       0.24      0.18      0.17     20762
+weighted avg       0.26      0.19      0.19     20762
+This is svm with Gaussian kernel (', with degree: ', 0):
+Accuracy:  0.45578460649263075
+[[ 413  615  513  111   37   22]
+ [ 172 1597  987  203   60   38]
+ [ 145  816 1854  894  154   58]
+ [  15  223  893 1670  935  285]
+ [  12   76  311  893 1548 1174]
+ [   9  107  226  470  845 2381]]
+              precision    recall  f1-score   support
+        1930       0.54      0.24      0.33      1711
+        1940       0.47      0.52      0.49      3057
+        1950       0.39      0.47      0.43      3921
+        1960       0.39      0.42      0.40      4021
+        1970       0.43      0.39      0.41      4014
+        1980       0.60      0.59      0.60      4038
+    accuracy                           0.46     20762
+   macro avg       0.47      0.44      0.44     20762
+weighted avg       0.46      0.46      0.45     20762
+
+
+
+EXP5
+Accuracy:  0.9151955694011769
+[[1618  186]
+ [ 304 3670]]
+              precision    recall  f1-score   support
+        1930       0.84      0.90      0.87      1804
+        1980       0.95      0.92      0.94      3974
+    accuracy                           0.92      5778
+   macro avg       0.90      0.91      0.90      5778
+weighted avg       0.92      0.92      0.92      5778
+
+
+
+
+This is svm with linear kernel (', with degree: ', 0):
+Accuracy:  0.9254067151263413
+
+[[1597  162]
+ [ 269 3750]]
+              precision    recall  f1-score   support
+        1930       0.86      0.91      0.88      1759
+        1980       0.96      0.93      0.95      4019
+    accuracy                           0.93      5778
+   macro avg       0.91      0.92      0.91      5778
+weighted avg       0.93      0.93      0.93      5778
+This is svm with Sigmoid kernel (', with degree: ', 0):
+Accuracy:  0.5939771547248183
+
+[[ 609 1182]
+ [1164 2823]]
+              precision    recall  f1-score   support
+        1930       0.34      0.34      0.34      1791
+        1980       0.70      0.71      0.71      3987
+    accuracy                           0.59      5778
+   macro avg       0.52      0.52      0.52      5778
+weighted avg       0.59      0.59      0.59      5778
+This is svm with Gaussian kernel (', with degree: ', 0):
+Accuracy:  0.933367947386639
+
+[[1571  219]
+ [ 206 3782]]
+              precision    recall  f1-score   support
+        1930       0.88      0.88      0.88      1790
+        1980       0.95      0.95      0.95      3988
+    accuracy                           0.93      5778
+   macro avg       0.91      0.91      0.91      5778
+weighted avg       0.93      0.93      0.93      5778
+This is svm with polynomial kernel (', with degree: ', 2):
+Accuracy:  0.9283489096573209
+
+[[1604  198]
+ [ 216 3760]]
+              precision    recall  f1-score   support
+        1930       0.88      0.89      0.89      1802
+        1980       0.95      0.95      0.95      3976
+    accuracy                           0.93      5778
+   macro avg       0.92      0.92      0.92      5778
+weighted avg       0.93      0.93      0.93      5778
+This is svm with polynomial kernel (', with degree: ', 3):
+Accuracy:  0.9347525095188647
+
+[[1546  177]
+ [ 200 3855]]
+              precision    recall  f1-score   support
+        1930       0.89      0.90      0.89      1723
+        1980       0.96      0.95      0.95      4055
+    accuracy                           0.93      5778
+   macro avg       0.92      0.92      0.92      5778
+weighted avg       0.94      0.93      0.93      5778
+This is svm with polynomial kernel (', with degree: ', 4):
+Accuracy:  0.9285219799238491
+
+[[1572  234]
+ [ 179 3793]]
+              precision    recall  f1-score   support
+        1930       0.90      0.87      0.88      1806
+        1980       0.94      0.95      0.95      3972
+    accuracy                           0.93      5778
+   macro avg       0.92      0.91      0.92      5778
+weighted avg       0.93      0.93      0.93      5778
+

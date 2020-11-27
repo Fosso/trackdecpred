@@ -1,0 +1,45 @@
+EXPERIMENT 3
+
+Gaussian #1
+---start of svm---
+---end of svm---
+---SVM for experiment 3 had a 1656.849839925766 seconds execution time---
+
+Gaussian #2
+---start of svm---
+results in: confusion_matrix_exp3.png
+---end of svm---
+---SVM for experiment 3 had a 1698.0405488014221 seconds execution time---
+
+====================================================================================
+
+EXPERIMENT 5
+
+Poly3 #1
+---start of svm---
+results in: confusion_matrix_exp5_p3.png
+---end of svm---
+---SVM for experiment 5 had a 24.06390404701233 seconds execution time---
+
+Poly4 #2
+---start of svm---
+results in: confusion_matrix_exp5_p4.png
+---end of svm---
+---SVM for experiment 5 had a 37.92253589630127 seconds execution time---
+
+Poly4 #5
+---start of svm---
+0.9297738912533827
+---end of svm---
+Poly4 #4
+---start of svm---
+0.930119724782106        : THIS IS THE WINNER OF WHAT DEGREE IS OPTIMAL!
+---end of svm---
+Poly3 #3
+---start of svm---
+0.9281728246618954
+---end of svm---
+Poly2 #2
+---start of svm---
+0.9265719452705431
+---end of svm---

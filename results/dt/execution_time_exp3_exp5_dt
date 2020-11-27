@@ -1,0 +1,14 @@
+EXPERIMENT 3
+
+---start of dt---
+results in: confusion_matrix_exp3_dt.png
+---end of svm---
+---kNN for experiment 3 had a 5.549676179885864 seconds execution time---
+
+====================================================================================
+
+EXPERIMENT 5
+---start of dt---
+results in: confusion_matrix_exp5_dt.png
+---end of svm---
+---kNN for experiment 5 had a 1.2670989036560059 seconds execution time---
