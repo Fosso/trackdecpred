@@ -100,11 +100,6 @@ conda create --name <environment-name> --file <requirements.txt>
 conda activate <environment-name>
 ```
 
-```bash
-conda install
-```
-
-
 ## Description of Main Files
 ### main.py
 
