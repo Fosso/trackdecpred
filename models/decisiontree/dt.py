@@ -53,7 +53,7 @@ def dt(df, average, md, optimal):
 
         # cross validate accuracy
         cv_scores_mean = np.mean(cv_scores)
-        # print("Cross validated accuracy: ", cv_scores_mean)
+        print("Cross validated accuracy: ", cv_scores_mean)
 
         plot_confusion_matrix(clf, X_test, y_test)
 
@@ -62,12 +62,13 @@ def dt(df, average, md, optimal):
 
         # print(classification_report(y_test, y_pred))
         f1 = f1_score(y_test, y_pred, average=average)
+        print("F1-Score: ", f1)
         print("---end of dt---")
 
         return cv_scores_mean, f1
 
 
-# Update file paths dependant on if your running from main og locally.
+# Update file paths dependant on if your running from main or locally.
 def run_dt_on_dataset(exp, md, optimal):
     cv_scores_mean, f1 = 0, 0
     if exp == 3:

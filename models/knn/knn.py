@@ -12,7 +12,7 @@ import time
 start_time = time.time()
 
 
-# Update file paths dependant on if your running from main og locally.
+# Update file paths dependant on if your running from main or locally.
 def run_knn(param_k, exp, optimal):
     print("---start of knn---")
     df = pd.read_csv("data/cleanneddata_exp2.csv")
@@ -81,10 +81,12 @@ def run_knn(param_k, exp, optimal):
             # f1 weighted (macro) for exp 3
             if exp == 3:
                 f1 = f1_score(y_test, y_pred, average='weighted')
+                print("F1-Score: ", f1)
 
             # f1 micro for exp 5 (and all the other experiments)
             else:
                 f1 = f1_score(y_test, y_pred, average='micro')
+                print("F1-Score: ", f1)
 
             # Prints confusion matrix with presentation view.
             plot_confusion_matrix(clf, X_test, y_test)

@@ -54,11 +54,12 @@ def svm(df, kernel, deg, average, **kwargs):
     cv_scores = cross_val_score(clf, X_train, y_train)
     cv_scores_mean = np.mean(cv_scores)
 
-    # print("Cross validated accuracy in SVM: ", cv_scores_mean)
+    print("Cross validated accuracy: ", cv_scores_mean)
     # print("This is svm with {} kernel {}: \n".format(kernel, (", with degree: ", deg)))
 
     # calculate f1-score
     f1 = f1_score(y_test, y_pred, average=average)
+    print("F1-Score: ", f1)
 
     # create confusion matrix
     plot_confusion_matrix(clf, X_test, y_test)
@@ -73,7 +74,7 @@ def svm(df, kernel, deg, average, **kwargs):
     return cv_scores_mean, f1
 
 
-# Update file paths dependant on if your running from main og locally.
+# Update file paths dependant on if your running from main or locally.
 def run_svm_on_dataset(exp, kernel, deg):
     cv_scores_mean, f1_micro = 0, 0
     if exp == 3:

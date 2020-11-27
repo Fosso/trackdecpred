@@ -37,7 +37,7 @@ def knn_exp1(param_k):
             accuracy2 = (correct / float(len(X_test)) * 100.0)
             accuracy_list.append(accuracy2)
 
-    print("accuracy: ", accuracy2)
+    print("Accuracy: ", accuracy2)
 
     # old way of making this early experiment to run optimal k, k has to be set to 10 in main.py
     if param_k == 10:
